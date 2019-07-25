@@ -25,7 +25,7 @@
             </Grid.Background>
             <StackPanel>
                 <Grid Height="150" Background="white">
-                    <Image x:Name="ENA_GAS_png" Source="ENA-GAS.png" Stretch="Fill"/>
+                    
                 </Grid>
                 <ListView Foreground="Beige">
                     <ListViewItem Height="60">
