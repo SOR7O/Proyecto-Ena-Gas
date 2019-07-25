@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Base">
+  <DataContextMoniker Name="/BaseDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a997af92-ae6b-42da-bf23-0e5bb94ed5b5" absoluteBounds="3.5, 3.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/BaseDataContext/Clientes" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3c28d517-5489-4f48-b347-dc5c88abdd0d" absoluteBounds="3.5149999999999997, 3.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0264a8c8-096d-4ac9-9208-f9691e1dcb09" absoluteBounds="1.25, 3.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BaseDataContext/Usuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fa52b564-ad56-4cba-a885-792e3f220b9f" absoluteBounds="1.2650000000000001, 3.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="943c7f02-3a80-4564-be49-9b13f7646252" absoluteBounds="1, 0.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BaseDataContext/Chimbo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a9e7bea2-fdcc-41c0-88b0-b22522e3c655" absoluteBounds="1.0150000000000001, 1.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7ef16135-1fa0-4925-bb2e-a0a1f5550991" absoluteBounds="3.75, 1.125, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/BaseDataContext/Inventario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="64fb0121-f03e-4073-93e4-023409c99b2c" absoluteBounds="3.7649999999999997, 1.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.75 : 1.72199625651042); (3 : 1.72199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BaseDataContext/Inventario/Inventario_Chimbo" />
+      <nodes>
+        <classShapeMoniker Id="7ef16135-1fa0-4925-bb2e-a0a1f5550991" />
+        <classShapeMoniker Id="943c7f02-3a80-4564-be49-9b13f7646252" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="c99ab6c7-e6f7-4e52-a5c4-0dcd74184276" absoluteBounds="1.875, 5.875, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/BaseDataContext/Cargo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c55de694-b356-4c07-9f8e-941c4bef0e38" absoluteBounds="1.8899999999999997, 6.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
