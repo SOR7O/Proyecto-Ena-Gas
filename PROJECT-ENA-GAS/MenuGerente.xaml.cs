@@ -32,66 +32,57 @@ namespace PROJECT_ENA_GAS
         private void ListViewItemCliente(object sender, RoutedEventArgs e)
         {
             //llama a la ventana de cliente
+            Clientes clientes = new Clientes();
+            clientes.Show();
+            this.Close();
         }
 
-        private void ListViewItem_Selected_1(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
 
         private void ListViewItemVentas(object sender, RoutedEventArgs e)
         {
-
+            Ventas ventas = new Ventas();
+            ventas.Show();
+            this.Close();
         }
 
-        private void ListViewItem_Selected_2(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
 
         private void ListViewItemInventario(object sender, RoutedEventArgs e)
         {
-
+            Inventario inventario = new Inventario();
+            inventario.Show();
+            this.Close();
         }
 
-        private void ListViewItem_Selected_3(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
 
         private void ListViewItemEstadisticas(object sender, RoutedEventArgs e)
         {
-
+           
         }
 
-        private void ListViewItem_Selected_4(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
 
         private void ListViewItemReporte(object sender, RoutedEventArgs e)
         {
-
+            Reporte reporte = new Reporte();
+            reporte.Show();
+            this.Close();
         }
 
-        private void ListViewItem_Selected_5(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
 
         private void ListViewItemAñadirPersona(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void ListViewItem_Selected_6(object sender, RoutedEventArgs e)
-        {
-
+            
         }
 
         private void ListViewItemAñadirUsuario(object sender, RoutedEventArgs e)
         {
-
+            Ausuario ausuario = new Ausuario();
+            ausuario.Show();
+            this.Close();
         }
     }
 }

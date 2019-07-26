@@ -26,8 +26,8 @@
                     </ComboBox>
                     <TextBox Margin="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Summoner"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Margin="15 10" Content="Cancelar" Background="#06069b"/>
-                        <Button Margin="15 10" Content="Entrar" Background="#06069b"/>
+                        <Button Margin="15 10" Name="btnCancelar" Content="Cancelar" Background="#06069b" Click="BtnCancelar_Click"/>
+                        <Button Margin="15 10" Name="btnEntrar" Content="Entrar" Background="#06069b" Click="BtnEntrar_Click"/>
                     </StackPanel>
                 </StackPanel>
             </Border>

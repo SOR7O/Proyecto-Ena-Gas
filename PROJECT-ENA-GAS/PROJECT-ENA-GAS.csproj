@@ -71,7 +71,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Ausuario.xaml">
+    <Page Include="Usuario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -94,8 +94,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Ausuario.xaml.cs">
-      <DependentUpon>Ausuario.xaml</DependentUpon>
+    <Compile Include="Usuario.xaml.cs">
+      <DependentUpon>Usuario.xaml</DependentUpon>
     </Compile>
     <Compile Include="Clientes.xaml.cs">
       <DependentUpon>Clientes.xaml</DependentUpon>

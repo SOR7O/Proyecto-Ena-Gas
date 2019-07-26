@@ -24,5 +24,22 @@ namespace PROJECT_ENA_GAS
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEntrar_Click(object sender, RoutedEventArgs e)
+        {
+            MenuGerente menuGerente = new MenuGerente();
+            menuGerente.Show();
+            this.Close();
+        }
     }
 }
