@@ -28,43 +28,43 @@
                     
                 </Grid>
                 <ListView Foreground="Beige">
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItemCliente">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Person" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Clientes" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItemVentas">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="MoneyUsd" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Ventas" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItemInventario">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ViewDashboardVariant" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Inventario" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItemEstadisticas">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ChartHistogram" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Estadisticas" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItemReporte">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Report" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Reporte" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItemAñadirPersona">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="PersonAdd" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Añadir Persona" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItemAñadirUsuario">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="PersonAdd" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Añadir Usuario" VerticalAlignment="Center" Margin="20 10 "/>
