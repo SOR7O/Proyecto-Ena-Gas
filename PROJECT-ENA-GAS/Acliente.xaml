@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Acliente" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
     <Grid Background="LightGray" Margin="0,-12,0,12">
-        <Grid Height="60" VerticalAlignment="Top" Background="#FF0D154B">
+        <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
             <TextBlock Text="Añadir Cliente" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="BtnRegresarMenu" Background="#FFEA1616" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right">
@@ -24,7 +24,7 @@
         <TextBox HorizontalAlignment="Left" Height="49" Margin="56,147,0,0" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" Width="101" Foreground="#FF0E0808" FontSize="22"/>
         <TextBox HorizontalAlignment="Left" Height="49" Margin="56,233,0,0" TextWrapping="Wrap" Text="Numero" VerticalAlignment="Top" Width="101" Foreground="#FF0E0808" FontSize="22"/>
         <TextBox HorizontalAlignment="Left" Height="49" Margin="56,320,0,0" TextWrapping="Wrap" Text="Direccion" VerticalAlignment="Top" Width="101" Foreground="#FF0E0808" FontSize="22"/>
-        <Button Content="Agregar" HorizontalAlignment="Left" Height="59" Margin="474,445,0,0" VerticalAlignment="Top" Width="167" FontSize="20" Background="#FF170A3A"/>
+        <Button Content="Agregar" HorizontalAlignment="Left" Height="59" Margin="474,445,0,0" VerticalAlignment="Top" Width="167" FontSize="20" Background="#06069b"/>
 
     </Grid>
 </Window>
