@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Reporte" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
     <Grid Background="LightGray" Margin="0,-12,0,12">
-        <Grid Height="60" VerticalAlignment="Top" Background="#FF02135D">
+        <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
             <TextBlock Text="Reporte" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Background="#FFEA1616" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right">
@@ -17,6 +17,6 @@
             </StackPanel>
         </Grid>
         <DataGrid HorizontalAlignment="Left" Height="292" Margin="73,121,0,0" VerticalAlignment="Top" Width="936"/>
-        <Button Content="Regresar" HorizontalAlignment="Left" Height="47" Margin="482,445,0,0" VerticalAlignment="Top" Width="129" Background="#FF2E0C5F"/>
+        <Button Content="Regresar" HorizontalAlignment="Left" Height="47" Margin="482,445,0,0" VerticalAlignment="Top" Width="129" Background="#06069b"/>
     </Grid>
 </Window>
