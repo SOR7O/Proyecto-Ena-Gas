@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
-    <Grid Background="#FF232B59">
+    <Grid Background="#06069b">
         <StackPanel Margin="50" RenderTransformOrigin="0.531,0.484">
             <Border Background="white" Margin="10 20" CornerRadius="5" Height="310">
                 <StackPanel Margin="25">
@@ -26,8 +26,8 @@
                     </ComboBox>
                     <TextBox Margin="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Summoner"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Margin="15 10" Content="Cancelar"/>
-                        <Button Margin="15 10" Content="Entrar"/>
+                        <Button Margin="15 10" Content="Cancelar" Background="#06069b"/>
+                        <Button Margin="15 10" Content="Entrar" Background="#06069b"/>
                     </StackPanel>
                 </StackPanel>
             </Border>

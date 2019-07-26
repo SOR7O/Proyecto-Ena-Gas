@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="MenuEmpleado" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
     <Grid Background="LightGray" Margin="0,-12,0,12" HorizontalAlignment="Right" Width="1080">
-        <Grid Height="60" VerticalAlignment="Top" Background="#FF35183C">
+        <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
             <TextBlock Text="ENA-GAS" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Margin="590,16,398,14"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Background="#FF7C1313" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right">
@@ -16,10 +16,11 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <Grid Width="200" HorizontalAlignment="Left" Background="#FF232B59">
+        <Grid Width="200" HorizontalAlignment="Left" Background="#06069b">
             <StackPanel>
                 <Grid Height="150" Background="white">
-                    
+                    <Image x:Name="ENA_GAS_png" Source="ENA-GAS.png" Stretch="Fill"/>
+
                 </Grid>
                 <ListView Foreground="Beige">
                     <ListViewItem Height="60">

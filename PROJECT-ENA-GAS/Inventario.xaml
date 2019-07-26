@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Inventario" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
     <Grid Background="LightGray" Margin="0,-12,0,12">
-        <Grid Height="60" VerticalAlignment="Top" Background="#FF10197A">
+        <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
             <TextBlock Text="Inventario" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Background="#FFEA1616" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right">
