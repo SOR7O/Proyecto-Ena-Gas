@@ -11,7 +11,7 @@
         <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
             <TextBlock Text="Clientes" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button  Background="#FFEA1616" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button Name="BtnCerrar" Background="#FFEA1616" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right" Click="BtnCerrar_Click">
                     <materialDesign:PackIcon  Foreground="#FF0A1636" Kind="Close" Width="25" Height="25" Background="#FFEA1616"/>
                 </Button>
             </StackPanel>
@@ -19,7 +19,7 @@
 
         <TextBlock FontSize="30" HorizontalAlignment="Left" Height="57" Margin="71,103,0,0" TextWrapping="Wrap" Text="Nombre del cliente" VerticalAlignment="Top" Width="264" IsHitTestVisible="False" Foreground="#FF0C0101"/>
         <TextBox x:Name="placanum" FontSize="30"  Background="#FFB2A9A9" HorizontalAlignment="Left" Height="43" Margin="71,165,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="675" MaxLength="7" />
-        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Height="43" Margin="858,165,0,0" VerticalAlignment="Top" Width="152" Background="#06069b"/>
+        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Height="43" Margin="858,165,0,0" VerticalAlignment="Top" Width="152" Background="#06069b" Click="BtnBuscar_Click"/>
         <DataGrid HorizontalAlignment="Left" Height="308" Margin="71,252,0,0" VerticalAlignment="Top" Width="939"/>
     </Grid>
 </Window>

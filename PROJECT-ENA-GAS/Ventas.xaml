@@ -11,7 +11,7 @@
         <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
             <TextBlock Text="Ventas" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Background="#FFEA1616" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button Name="btnRegresar" Background="#FFEA1616" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right" Click="BtnRegresar_Click">
                     <materialDesign:PackIcon  Foreground="#FF0A1636" Kind="Close" Width="25" Height="25" Background="#FFEA1616"/>
                 </Button>
             </StackPanel>
@@ -25,9 +25,9 @@
         <TextBox HorizontalAlignment="Left" Height="36" Margin="44,304,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="382" Background="#FFC7C3B7"/>
         <TextBox HorizontalAlignment="Left" Height="36" Margin="44,394,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="382" Background="#FFC7C3B7"/>
         <ComboBox HorizontalAlignment="Left" Height="34" Margin="44,477,0,0" VerticalAlignment="Top" Width="382" Background="#FFC9C9C9"/>
-        <Button Content="Vender" HorizontalAlignment="Left" Height="36" Margin="529,427,0,0" VerticalAlignment="Top" Width="121" Background="#06069b"/>
-        <Button Content="Buscar" HorizontalAlignment="Left" Height="36" Margin="727,427,0,0" VerticalAlignment="Top" Width="121" Background="#06069b"/>
-        <Button Content="Salir" HorizontalAlignment="Left" Height="36" Margin="926,427,0,0" VerticalAlignment="Top" Width="121" Background="#06069b"/>
+        <Button Name="btnVender" Content="Vender" HorizontalAlignment="Left" Height="36" Margin="529,427,0,0" VerticalAlignment="Top" Width="121" Background="#06069b" Click="BtnVender_Click"/>
+        <Button Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Height="36" Margin="727,427,0,0" VerticalAlignment="Top" Width="121" Background="#06069b" Click="BtnBuscar_Click"/>
+        <Button Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Height="36" Margin="926,427,0,0" VerticalAlignment="Top" Width="121" Background="#06069b" Click="BtnSalir_Click"/>
         <Label Content="Peso" HorizontalAlignment="Left" Height="27" Margin="44,445,0,0" VerticalAlignment="Top" Width="99"/>
         <Image x:Name="ENA_GAS_png" Margin="559,97,73,193" Source="ENA-GAS.png" Stretch="Fill"/>
 

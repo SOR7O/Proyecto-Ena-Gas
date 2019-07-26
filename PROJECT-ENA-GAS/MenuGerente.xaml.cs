@@ -75,13 +75,22 @@ namespace PROJECT_ENA_GAS
 
         private void ListViewItemAñadirPersona(object sender, RoutedEventArgs e)
         {
-            
+            Persona persona = new Persona();
+            persona.Show();
+            this.Close();
         }
 
         private void ListViewItemAñadirUsuario(object sender, RoutedEventArgs e)
         {
             Ausuario ausuario = new Ausuario();
             ausuario.Show();
+            this.Close();
+        }
+
+        private void BtnCerrar_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow regresar = new MainWindow();
+            regresar.Show();
             this.Close();
         }
     }

@@ -11,12 +11,12 @@
         <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
             <TextBlock Text="Reporte" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Background="#FFEA1616" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button Name="btnSalir" Background="#FFEA1616" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right" Click="BtnSalir_Click">
                     <materialDesign:PackIcon  Foreground="#FF0A1636" Kind="Close" Width="25" Height="25" Background="#FFEA1616"/>
                 </Button>
             </StackPanel>
         </Grid>
         <DataGrid HorizontalAlignment="Left" Height="292" Margin="73,121,0,0" VerticalAlignment="Top" Width="936"/>
-        <Button Content="Regresar" HorizontalAlignment="Left" Height="47" Margin="482,445,0,0" VerticalAlignment="Top" Width="129" Background="#06069b"/>
+        <Button Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Height="47" Margin="482,445,0,0" VerticalAlignment="Top" Width="129" Background="#06069b" Click="BtnRegresar_Click_1"/>
     </Grid>
 </Window>

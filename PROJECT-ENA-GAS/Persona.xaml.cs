@@ -15,25 +15,25 @@ using System.Windows.Shapes;
 namespace PROJECT_ENA_GAS
 {
     /// <summary>
-    /// Lógica de interacción para Clientes.xaml
+    /// Lógica de interacción para Persona.xaml
     /// </summary>
-    public partial class Clientes : Window
+    public partial class Persona : Window
     {
-        public Clientes()
+        public Persona()
         {
             InitializeComponent();
         }
 
-        private void BtnCerrar_Click(object sender, RoutedEventArgs e)
+        private void BtnAgregar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnRegresar_Click(object sender, RoutedEventArgs e)
         {
             MenuGerente regresar = new MenuGerente();
             regresar.Show();
             this.Close();
-        }
-
-        private void BtnBuscar_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

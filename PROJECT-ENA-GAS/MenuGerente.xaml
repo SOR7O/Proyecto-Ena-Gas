@@ -11,7 +11,7 @@
         <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
             <TextBlock Text="Administrador" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" RenderTransformOrigin="1.481,0.62" Margin="543,21,390,10" Width="147"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="BtnCerrar" Background="#FF7C1313" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button x:Name="BtnCerrar" Background="#FF7C1313" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right" Click="BtnCerrar_Click">
                     <materialDesign:PackIcon  Foreground="#FF0A1636" Kind="Close" Width="25" Height="25" Background="#FF810E0E"/>
                 </Button>
             </StackPanel>
