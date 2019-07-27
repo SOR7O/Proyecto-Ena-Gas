@@ -23,5 +23,75 @@ namespace PROJECT_ENA_GAS
         {
             InitializeComponent();
         }
+
+        private void ListViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListViewItemCliente(object sender, RoutedEventArgs e)
+        {
+            //llama a la ventana de cliente
+            Clientes clientes = new Clientes();
+            clientes.Show();
+            this.Close();
+        }
+
+      
+
+        private void ListViewItemVentas(object sender, RoutedEventArgs e)
+        {
+            Ventas ventas = new Ventas();
+            ventas.Show();
+            this.Close();
+        }
+
+       
+
+        private void ListViewItemInventario(object sender, RoutedEventArgs e)
+        {
+            Inventario inventario = new Inventario();
+            inventario.Show();
+            this.Close();
+        }
+
+      
+
+        private void ListViewItemEstadisticas(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+      
+
+        private void ListViewItemReporte(object sender, RoutedEventArgs e)
+        {
+            Reporte reporte = new Reporte();
+            reporte.Show();
+            this.Close();
+        }
+
+      
+
+        private void ListViewItemAñadirPersona(object sender, RoutedEventArgs e)
+        {
+            Persona persona = new Persona();
+            persona.Show();
+            this.Close();
+        }
+
+        private void ListViewItemAñadirUsuario(object sender, RoutedEventArgs e)
+        {
+            Ausuario ausuario = new Ausuario();
+            ausuario.Show();
+            this.Close();
+        }
+
+        private void BtnCerrar_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow regresar = new MainWindow();
+            regresar.Show();
+            this.Close();
+        }
     }
 }

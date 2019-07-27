@@ -8,10 +8,10 @@
         mc:Ignorable="d"
         Title="MenuGerente" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
     <Grid Background="LightGray" Margin="0,-12,0,12">
-        <Grid Height="60" VerticalAlignment="Top" Background="#FF2E0749">
-            <TextBlock Text="ENA-GAS" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" RenderTransformOrigin="1.481,0.62" Margin="566,21,422,10"/>
+        <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
+            <TextBlock Text="Administrador" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" RenderTransformOrigin="1.481,0.62" Margin="543,21,390,10" Width="147"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="BtnCerrar" Background="#FF7C1313" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button x:Name="BtnCerrar" Background="#FF7C1313" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right" Click="BtnCerrar_Click">
                     <materialDesign:PackIcon  Foreground="#FF0A1636" Kind="Close" Width="25" Height="25" Background="#FF810E0E"/>
                 </Button>
             </StackPanel>
@@ -20,7 +20,7 @@
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 
-                    <GradientStop Color="#FF081947" Offset="1"/>
+                    <GradientStop Color="#06069b" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.Background>
             <StackPanel>
@@ -28,43 +28,43 @@
                     
                 </Grid>
                 <ListView Foreground="Beige">
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItemCliente">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Person" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Clientes" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItemVentas">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="MoneyUsd" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Ventas" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItemInventario">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ViewDashboardVariant" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Inventario" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItemEstadisticas">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ChartHistogram" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Estadisticas" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItemReporte">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Report" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Reporte" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItemAñadirPersona">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="PersonAdd" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Añadir Persona" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItemAñadirUsuario">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="PersonAdd" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Añadir Usuario" VerticalAlignment="Center" Margin="20 10 "/>
@@ -72,6 +72,7 @@
                     </ListViewItem>
                 </ListView>
             </StackPanel>
+            <Image x:Name="ENA_GAS_png" Margin="0,0,0,452" Source="ENA-GAS.png" Stretch="Fill"/>
         </Grid>
     </Grid>
 </Window>

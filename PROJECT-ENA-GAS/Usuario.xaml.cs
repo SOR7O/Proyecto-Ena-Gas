@@ -73,5 +73,17 @@ namespace PROJECT_ENA_GAS
         {
             Application.Current.Shutdown();
         }
+
+        private void BtnRegresar_Click(object sender, RoutedEventArgs e)
+        {
+            MenuGerente regresar = new MenuGerente();
+            regresar.Show();
+            this.Close();
+        }
+
+        private void BtnAgregar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
