@@ -184,5 +184,17 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ENA-GASLogin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ENA-GAS3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ENA-GAS2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ENA-GAS1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,15 +7,22 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
-    <Grid Background="#06069b">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF6CF17E" Offset="0"/>
+                <GradientStop Color="#FF1949AE" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image x:Name="ENA_GASLogin_png" Margin="92,29,88,363" Source="ENA-GASLogin.png" Stretch="Fill"/>
         <StackPanel Margin="50" RenderTransformOrigin="0.531,0.484">
-            <Border Background="White" Margin="10 20" CornerRadius="5" Height="310">
+            <Border Background="White" Margin="10,200,0,20" CornerRadius="5" Height="251">
                 <StackPanel Margin="25">
-                    <TextBox Foreground="Black" Name="txtNombre" Visibility="Visible" Margin="15" materialDesign:HintAssist.Hint="Nombre de usuario" materialDesign:HintAssist.IsFloating="True"/>
-                    <TextBox Foreground="Black" Name="txtContraLogin" Margin="15" materialDesign:HintAssist.Hint="Contraseña"/>
+                    <TextBox Foreground="Black" x:Name="txtNombre" Visibility="Visible" Margin="15" materialDesign:HintAssist.Hint="Nombre de usuario" materialDesign:HintAssist.IsFloating="True"/>
+                    <TextBox Foreground="Black" x:Name="txtContraLogin" Margin="15" materialDesign:HintAssist.Hint="Contraseña"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Margin="15 10" Name="btnCancelar" Content="Cancelar" Background="#06069b" Click="BtnCancelar_Click"/>
-                        <Button Margin="15 10" Name="btnEntrar" Content="Entrar" Background="#06069b" Click="BtnEntrar_Click"/>
+                        <Button Margin="15 10" x:Name="btnCancelar" Content="Cancelar" Background="#06069b" Click="BtnCancelar_Click"/>
+                        <Button Margin="15 10" x:Name="btnEntrar" Content="Entrar" Background="#06069b" Click="BtnEntrar_Click"/>
                     </StackPanel>
                 </StackPanel>
             </Border>
