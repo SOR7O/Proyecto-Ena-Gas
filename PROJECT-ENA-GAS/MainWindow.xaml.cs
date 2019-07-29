@@ -20,9 +20,14 @@ namespace PROJECT_ENA_GAS
     /// </summary>
     public partial class MainWindow : Window
     {
+        BaseDeDatosDataContext dt;
         public MainWindow()
         {
             InitializeComponent();
+            dt = new BaseDeDatosDataContext();
+
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -32,14 +37,44 @@ namespace PROJECT_ENA_GAS
 
         private void BtnCancelar_Click(object sender, RoutedEventArgs e)
         {
+            Application.Current.Shutdown();
 
         }
 
         private void BtnEntrar_Click(object sender, RoutedEventArgs e)
         {
-            MenuGerente menuGerente = new MenuGerente();
-            menuGerente.Show();
-            this.Close();
+            var existeNombre = (from usuario in dt.Usuario
+                                where usuario.nombreUsuario == txtNombre.Text && usuario.contraseña == txtContraLogin.Text
+                                select usuario).FirstOrDefault();
+
+
+            if (txtNombre.Text == string.Empty || txtContraLogin.Text == string.Empty)
+            {
+                MessageBox.Show("No debe dejar ningun campo vacio");
+            }
+            else
+            {
+
+                if (existeNombre != null)
+                {
+                    MenuGerente menuGerente = new MenuGerente();
+                    menuGerente.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("El usuario no existe o contraseña incorrecta ");
+                }
+            }
+
         }
+
+
+
+
     }
-}
+        }
+
+
+    
+

@@ -19,13 +19,16 @@ namespace PROJECT_ENA_GAS
     /// </summary>
     public partial class Persona : Window
     {
+        BaseDeDatosDataContext dt;
         public Persona()
         {
             InitializeComponent();
+            dt = new BaseDeDatosDataContext();
         }
 
         private void BtnAgregar_Click(object sender, RoutedEventArgs e)
         {
+
 
         }
 

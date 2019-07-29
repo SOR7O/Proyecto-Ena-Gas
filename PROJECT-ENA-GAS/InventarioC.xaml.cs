@@ -15,13 +15,15 @@ using System.Windows.Shapes;
 namespace PROJECT_ENA_GAS
 {
     /// <summary>
-    /// Lógica de interacción para Inventario.xaml
+    /// Lógica de interacción para InventarioC.xaml
     /// </summary>
-    public partial class Inventario : Window
+    public partial class InventarioC : Window
     {
-        public Inventario()
+        BaseDeDatosDataContext bdt;
+        public InventarioC()
         {
             InitializeComponent();
+            bdt = new BaseDeDatosDataContext();
         }
 
         private void BtnRegresar_Click(object sender, RoutedEventArgs e)
@@ -29,6 +31,14 @@ namespace PROJECT_ENA_GAS
             MenuGerente regresar = new MenuGerente();
             regresar.Show();
             this.Close();
+        }
+        private void MostrarInventario()
+        {
+            var mi = (from inv in bdt.Inventario
+                      select inv);
+            dtgView.DisplayMemberPath = "cantidad";
+            dtgView.SelectedItem = "idCantidad";
+            dtgView.ItemsSource = mi;
         }
     }
 }

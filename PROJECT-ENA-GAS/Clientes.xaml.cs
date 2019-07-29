@@ -19,9 +19,20 @@ namespace PROJECT_ENA_GAS
     /// </summary>
     public partial class Clientes : Window
     {
+        BaseDeDatosDataContext dt;
         public Clientes()
         {
             InitializeComponent();
+            dt = new BaseDeDatosDataContext();
+            llenar();
+   
+        }
+        private void llenar()
+        {
+            var lista = from cl in dt.ClientesEna
+                        select cl;
+            dtgClientes.ItemsSource = lista;
+
         }
 
         private void BtnCerrar_Click(object sender, RoutedEventArgs e)
@@ -34,6 +45,8 @@ namespace PROJECT_ENA_GAS
         private void BtnBuscar_Click(object sender, RoutedEventArgs e)
         {
 
+
         }
+  
     }
 }

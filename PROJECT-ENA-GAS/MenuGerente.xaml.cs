@@ -50,8 +50,8 @@ namespace PROJECT_ENA_GAS
 
         private void ListViewItemInventario(object sender, RoutedEventArgs e)
         {
-            Inventario inventario = new Inventario();
-            inventario.Show();
+            InventarioC inventarioC = new InventarioC();
+             inventarioC.Show();
             this.Close();
         }
 

@@ -9,22 +9,10 @@
         Title="MainWindow" Height="600" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
     <Grid Background="#06069b">
         <StackPanel Margin="50" RenderTransformOrigin="0.531,0.484">
-            <Border Background="white" Margin="10 20" CornerRadius="5" Height="310">
+            <Border Background="White" Margin="10 20" CornerRadius="5" Height="310">
                 <StackPanel Margin="25">
-                    <ComboBox Margin="15" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Region">
-                        <ComboBoxItem Content="RU"/>
-                        <ComboBoxItem Content="KR"/>
-                        <ComboBoxItem Content="BR1"/>
-                        <ComboBoxItem Content="OC1"/>
-                        <ComboBoxItem Content="JP1"/>
-                        <ComboBoxItem Content="NA1"/>
-                        <ComboBoxItem Content="EUN1"/>
-                        <ComboBoxItem Content="EUW1"/>
-                        <ComboBoxItem Content="TR1"/>
-                        <ComboBoxItem Content="LA1"/>
-                        <ComboBoxItem Content="LA2"/>
-                    </ComboBox>
-                    <TextBox Margin="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Summoner"/>
+                    <TextBox Foreground="Black" Name="txtNombre" Visibility="Visible" Margin="15" materialDesign:HintAssist.Hint="Nombre de usuario" materialDesign:HintAssist.IsFloating="True"/>
+                    <TextBox Foreground="Black" Name="txtContraLogin" Margin="15" materialDesign:HintAssist.Hint="Contraseña"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Margin="15 10" Name="btnCancelar" Content="Cancelar" Background="#06069b" Click="BtnCancelar_Click"/>
                         <Button Margin="15 10" Name="btnEntrar" Content="Entrar" Background="#06069b" Click="BtnEntrar_Click"/>
