@@ -24,6 +24,7 @@ namespace PROJECT_ENA_GAS
         {
             InitializeComponent();
             bdt = new BaseDeDatosDataContext();
+            MostrarInventario();
         }
 
         private void BtnRegresar_Click(object sender, RoutedEventArgs e)

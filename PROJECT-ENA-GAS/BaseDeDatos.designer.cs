@@ -110,6 +110,20 @@ namespace PROJECT_ENA_GAS
 				return this.GetTable<ClientesEna>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="EnaGas.AGREGAR_CHIMBO")]
+		public int AGREGAR_CHIMBO([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cantidad, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> precio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(20)")] string peso)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cantidad, precio, peso);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="EnaGas.AGREGAR_VENTA")]
+		public int AGREGAR_VENTA([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(13)")] string identidad, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string direccion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] string telefono, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string peso, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cantidad)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), identidad, nombre, apellido, direccion, telefono, peso, cantidad);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Usuario")]
@@ -488,7 +502,9 @@ namespace PROJECT_ENA_GAS
 		
 		private string _telefono;
 		
-		private string _peso;
+		private string _pesoC;
+		
+		private System.Nullable<int> _cantidad;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -506,8 +522,10 @@ namespace PROJECT_ENA_GAS
     partial void OndireccionChanged();
     partial void OntelefonoChanging(string value);
     partial void OntelefonoChanged();
-    partial void OnpesoChanging(string value);
-    partial void OnpesoChanged();
+    partial void OnpesoCChanging(string value);
+    partial void OnpesoCChanged();
+    partial void OncantidadChanging(System.Nullable<int> value);
+    partial void OncantidadChanged();
     #endregion
 		
 		public ClientesEna()
@@ -635,22 +653,42 @@ namespace PROJECT_ENA_GAS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_peso", DbType="NVarChar(100)")]
-		public string peso
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pesoC", DbType="NVarChar(100)")]
+		public string pesoC
 		{
 			get
 			{
-				return this._peso;
+				return this._pesoC;
 			}
 			set
 			{
-				if ((this._peso != value))
+				if ((this._pesoC != value))
 				{
-					this.OnpesoChanging(value);
+					this.OnpesoCChanging(value);
 					this.SendPropertyChanging();
-					this._peso = value;
-					this.SendPropertyChanged("peso");
-					this.OnpesoChanged();
+					this._pesoC = value;
+					this.SendPropertyChanged("pesoC");
+					this.OnpesoCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int")]
+		public System.Nullable<int> cantidad
+		{
+			get
+			{
+				return this._cantidad;
+			}
+			set
+			{
+				if ((this._cantidad != value))
+				{
+					this.OncantidadChanging(value);
+					this.SendPropertyChanging();
+					this._cantidad = value;
+					this.SendPropertyChanged("cantidad");
+					this.OncantidadChanged();
 				}
 			}
 		}

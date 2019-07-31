@@ -19,6 +19,7 @@ namespace PROJECT_ENA_GAS
     /// </summary>
     public partial class Persona : Window
     {
+        
         BaseDeDatosDataContext dt;
         public Persona()
         {
@@ -28,7 +29,11 @@ namespace PROJECT_ENA_GAS
 
         private void BtnAgregar_Click(object sender, RoutedEventArgs e)
         {
-
+            if(txtCantidad.Text==string.Empty || txtPeso.Text==string.Empty || txtPRecio.Text == string.Empty) { 
+            MessageBox.Show("No debe dejar ningun campo vacio");
+            }
+            dt.AGREGAR_CHIMBO(Convert.ToInt32(txtCantidad.Text), Convert.ToDecimal(txtPRecio.Text), txtPeso.Text);
+            MessageBox.Show("Datos almacenados");
 
         }
 

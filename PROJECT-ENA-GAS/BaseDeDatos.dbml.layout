@@ -26,10 +26,10 @@
         <elementListCompartment Id="591db720-015c-4889-b25a-670337fafb3a" absoluteBounds="0.51499999999999968, 3.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="cca34728-d384-46e9-bba9-75c6164f6640" absoluteBounds="5.5, 1.875, 2, 2.1554996744791666">
+    <classShape Id="0e57eebf-19d2-4b64-a8fe-b1e072cb3964" absoluteBounds="6.125, 2.625, 2, 2.3478011067708335">
       <DataClassMoniker Name="/BaseDeDatosDataContext/ClientesEna" />
       <nestedChildShapes>
-        <elementListCompartment Id="b1a1387c-a776-40b8-90f4-8a0aeb4b4ce6" absoluteBounds="5.515, 2.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a687190a-e217-4623-bb0a-7cdfd22531c6" absoluteBounds="6.14, 3.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

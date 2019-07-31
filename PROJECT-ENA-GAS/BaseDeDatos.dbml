@@ -36,7 +36,24 @@
       <Column Name="apellido" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="direccion" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="telefono" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="peso" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="pesoC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Function Name="EnaGas.AGREGAR_CHIMBO" Method="AGREGAR_CHIMBO">
+    <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="precio" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="peso" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="EnaGas.AGREGAR_VENTA" Method="AGREGAR_VENTA">
+    <Parameter Name="identidad" Type="System.String" DbType="VarChar(13)" />
+    <Parameter Name="nombre" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="apellido" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="direccion" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="telefono" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="peso" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

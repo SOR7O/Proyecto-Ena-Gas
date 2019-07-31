@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace PROJECT_ENA_GAS
 {
@@ -24,7 +25,6 @@ namespace PROJECT_ENA_GAS
         {
             InitializeComponent();
             dt = new BaseDeDatosDataContext();
-            llenar();
         }
 
         private void BtnRegresar_Click(object sender, RoutedEventArgs e)
@@ -33,52 +33,43 @@ namespace PROJECT_ENA_GAS
             regresar.Show();
             this.Close();
         }
-        private void llenar()
-        {
-            var ch = (from x in dt.Chimbo
-                      select new { x.peso }).ToList();
-            cmbPeso.DisplayMemberPath = "peso";
-            cmbPeso.SelectedItem = "idChimbo";
-            cmbPeso.ItemsSource = ch;
-        }
 
         private void BtnVender_Click(object sender, RoutedEventArgs e)
         {
-            ClientesEna cli = new ClientesEna()
-            {
-                identidad =txtId.Text,
-                nombre = txtNombre.Text,
-                apellido = txtApellido.Text,
-                direccion = txtDireccion.Text,
-                telefono = txtNumero.Text,
-                peso = cmbPeso.SelectedValue.ToString()
-            };
-            var existe = (from xi in dt.ClientesEna
-                          where xi.idCliente == cli.idCliente
-                          select xi).SingleOrDefault();
-            if (existe==null)
-            {
-                dt.ClientesEna.InsertOnSubmit(cli);
-                dt.SubmitChanges();
-                MessageBox.Show("Venta realizada");
-            }
-            else
-            {
-                existe.identidad = cli.identidad;
-                existe.nombre = cli.nombre;
-                existe.apellido = cli.apellido;
-                existe.telefono = cli.telefono;
-                existe.direccion = cli.direccion;
-                existe.peso = cli.peso;
-                dt.SubmitChanges();
-            }
-            cmbPeso.ItemsSource = dt.ClientesEna;
 
-        }
+            dt.AGREGAR_VENTA(txtId.Text, txtNombre.Text, txtApellido.Text, txtNumero.Text, txtDireccion.Text, cmbPeso.Text, Convert.ToInt32(txtCantidad.Text));
+                MessageBox.Show("Dato almacenado");
+         }
 
         private void BtnBuscar_Click(object sender, RoutedEventArgs e)
         {
+            string iden = txtId.Text;
+            using (BaseDeDatosDataContext bdt=new BaseDeDatosDataContext())
+            {
+                IQueryable<ClientesEna> objClientes = from cl in bdt.ClientesEna
+                                                      where cl.identidad == txtId.Text
+                                                      select cl;
+                if (objClientes==null)
+                {
+                    List<ClientesEna> lista = objClientes.ToList();
+                    var llenarCliente = lista[0];
+                    txtNombre.Text = llenarCliente.nombre;
+                    txtApellido.Text = llenarCliente.apellido;
+                    txtDireccion.Text = llenarCliente.direccion;
+                    txtNumero.Text = llenarCliente.telefono;
+                    cmbPeso.Text = llenarCliente.pesoC;
+                    txtCantidad.Text = llenarCliente.cantidad.ToString();
 
+                    dtgClientes.ItemsSource = lista;
+                    MessageBox.Show("Cliente encontrado");
+                    
+                }
+                else
+                {
+                    MessageBox.Show("El cliente no existe");
+                }
+
+            }
         }
 
         private void BtnSalir_Click(object sender, RoutedEventArgs e)
