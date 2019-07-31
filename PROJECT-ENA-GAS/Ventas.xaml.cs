@@ -46,10 +46,13 @@ namespace PROJECT_ENA_GAS
             string iden = txtId.Text;
             using (BaseDeDatosDataContext bdt=new BaseDeDatosDataContext())
             {
+                var exist = (from s in dt.ClientesEna
+                             where s.identidad == txtId.Text
+                             select s).FirstOrDefault();
                 IQueryable<ClientesEna> objClientes = from cl in bdt.ClientesEna
-                                                      where cl.identidad == txtId.Text
+                                                      where txtId.Text==cl.identidad
                                                       select cl;
-                if (objClientes==null)
+                if (exist!=null)
                 {
                     List<ClientesEna> lista = objClientes.ToList();
                     var llenarCliente = lista[0];
@@ -62,9 +65,11 @@ namespace PROJECT_ENA_GAS
 
                     dtgClientes.ItemsSource = lista;
                     MessageBox.Show("Cliente encontrado");
+           
+
                     
                 }
-                else
+               else
                 {
                     MessageBox.Show("El cliente no existe");
                 }
