@@ -13,26 +13,29 @@ GO
 CREATE SCHEMA EnaGas
 GO
 
-CREATE TABLE EnaGas.Clientes(
+CREATE TABLE EnaGas.ClientesEna(
 idCliente INT IDENTITY(1,1) PRIMARY KEY CLUSTERED NOT NULL,
 identidad VARCHAR(13)NOT NULL,
 nombre NVARCHAR(50)NOT NULL,
 apellido NVARCHAR(50)NOT NULL,
 direccion NVARCHAR(100)NOT NULL,
-telefono VARCHAR(20)
-)
-GO
-
-CREATE TABLE EnaGas.Inventario(
-idCantidad INT IDENTITY(1,1)NOT NULL PRIMARY KEY CLUSTERED,
+telefono VARCHAR(100),
+pesoC NVARCHAR(100),
 cantidad INT
 )
 GO
 
 
+
+CREATE TABLE EnaGas.Inventario(
+idCantidad INT IDENTITY(1,1)NOT NULL,
+cantidad INT NOT NULL PRIMARY KEY CLUSTERED
+)
+GO
+
 CREATE TABLE EnaGas.Chimbo(
 idChimbo INT IDENTITY(1,1)NOT NULL,
-idCantidad INT,
+cantidad int NOT NULL,
 peso VARCHAR(20)NOT NULL,
 precio MONEY NOT NULL
 )
@@ -46,9 +49,87 @@ cargo NVARCHAR(50)NOT NULL
 )
 GO
 
+CREATE TABLE EnaGas.Cargo(
+idCargo INT IDENTITY NOT NULL,
+cargoUsuario NVARCHAR(50) NOT NULL
+)
+GO
+
 ALTER TABLE EnaGas.Chimbo
 ADD CONSTRAINT FK_EnaGas_Chimbo_Id$TieneUna$EnaGas_Inventario
 FOREIGN KEY (idCantidad) REFERENCES EnaGas.Inventario(idCantidad)
-ON UPDATE NO ACTION
-ON DELETE CASCADE
+ON UPDATE CASCADE
+ON DELETE NO ACTION
 GO
+
+
+
+
+CREATE PROCEDURE EnaGas.AGREGAR_CHIMBO @cantidad INT,@precio MONEY,@peso NVARCHAR(20)
+AS
+  BEGIN TRANSACTION
+    BEGIN TRY
+	IF EXISTS(SELECT * FROM EnaGas.Chimbo WHERE peso=@peso)
+	BEGIN
+	       UPDATE EnaGas.Chimbo SET cantidad=@cantidad+cantidad,precio=@precio,peso=@peso where peso=@peso;
+		   UPDATE EnaGas.Inventario SET cantidad=@cantidad+cantidad
+		         WHERE idCantidad=1;
+		 END
+   ELSE
+   BEGIN
+   	       INSERT INTO EnaGas.Chimbo(cantidad,precio,peso)
+		   VALUES(@cantidad,@precio,@peso);
+		   		   UPDATE EnaGas.Inventario SET cantidad=@cantidad+cantidad
+		         WHERE idCantidad=1;
+   END
+		 COMMIT
+		   END TRY
+		   BEGIN CATCH
+		     ROLLBACK TRANSACTION
+		   END CATCH
+GO
+
+CREATE PROCEDURE EnaGas.AGREGAR_VENTA 
+@identidad VARCHAR(13),
+@nombre NVARCHAR(50),
+@apellido NVARCHAR(50),
+@direccion NVARCHAR(100),
+@telefono VARCHAR(100),
+@peso NVARCHAR(100),
+@cantidad INT
+AS
+  BEGIN TRANSACTION
+    BEGIN TRY
+	IF NOT EXISTS(SELECT * FROM EnaGas.ClientesEna WHERE identidad=@identidad)
+	BEGIN
+	IF EXISTS(SELECT * FROM EnaGas.Chimbo WHERE peso=@peso)
+	BEGIN
+	INSERT INTO EnaGas.ClientesEna(identidad,nombre,apellido,direccion,telefono,pesoC,cantidad)
+	values(@identidad,@nombre,@apellido,@direccion,@telefono,@peso,@cantidad);
+	UPDATE EnaGas.Inventario SET cantidad=cantidad-@cantidad WHERE idCantidad=1;
+	UPDATE EnaGas.Chimbo SET cantidad=cantidad-@cantidad where peso=@peso;
+	 END
+	 END
+	 ELSE
+	 BEGIN
+	 IF EXISTS(SELECT * FROM EnaGas.Chimbo,EnaGas.ClientesEna WHERE peso=@peso and pesoC=@peso)
+	 BEGIN
+    UPDATE EnaGas.ClientesEna SET cantidad=@cantidad+cantidad WHERE identidad=@identidad and pesoC=@peso; 
+	UPDATE EnaGas.Inventario SET cantidad=cantidad-@cantidad WHERE idCantidad=1;
+	UPDATE EnaGas.Chimbo SET cantidad=cantidad-@cantidad where peso=@peso;
+	 END
+	 ELSE
+	 BEGIN
+	 INSERT INTO EnaGas.ClientesEna(identidad,nombre,apellido,direccion,telefono,pesoC,cantidad)
+	values(@identidad,@nombre,@apellido,@direccion,@telefono,@peso,@cantidad);
+	UPDATE EnaGas.Inventario SET cantidad=cantidad-@cantidad WHERE idCantidad=1;
+	UPDATE EnaGas.Chimbo SET cantidad=cantidad-@cantidad where peso=@peso;
+	 END
+	 END
+	 COMMIT
+	END TRY
+	BEGIN CATCH
+	  ROLLBACK TRANSACTION
+	END CATCH
+GO
+
