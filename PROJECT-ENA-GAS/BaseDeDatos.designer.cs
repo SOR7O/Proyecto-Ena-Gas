@@ -33,9 +33,6 @@ namespace PROJECT_ENA_GAS
     partial void InsertUsuario(Usuario instance);
     partial void UpdateUsuario(Usuario instance);
     partial void DeleteUsuario(Usuario instance);
-    partial void InsertChimbo(Chimbo instance);
-    partial void UpdateChimbo(Chimbo instance);
-    partial void DeleteChimbo(Chimbo instance);
     partial void InsertClientesEna(ClientesEna instance);
     partial void UpdateClientesEna(ClientesEna instance);
     partial void DeleteClientesEna(ClientesEna instance);
@@ -87,14 +84,6 @@ namespace PROJECT_ENA_GAS
 			}
 		}
 		
-		public System.Data.Linq.Table<Chimbo> Chimbo
-		{
-			get
-			{
-				return this.GetTable<Chimbo>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Inventario> Inventario
 		{
 			get
@@ -111,6 +100,14 @@ namespace PROJECT_ENA_GAS
 			}
 		}
 		
+		public System.Data.Linq.Table<Chimbo> Chimbo
+		{
+			get
+			{
+				return this.GetTable<Chimbo>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="EnaGas.AGREGAR_CHIMBO")]
 		public int AGREGAR_CHIMBO([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cantidad, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> precio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(20)")] string peso)
 		{
@@ -123,6 +120,13 @@ namespace PROJECT_ENA_GAS
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), identidad, nombre, apellido, direccion, telefono, peso, cantidad);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="EnaGas.Estadistica")]
+		public ISingleResult<EstadisticaResult> Estadistica()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<EstadisticaResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -301,140 +305,6 @@ namespace PROJECT_ENA_GAS
 				{
 					this._cargo1 = value;
 				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Chimbo")]
-	public partial class Chimbo : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idChimbo;
-		
-		private System.Nullable<int> _idCantidad;
-		
-		private string _peso;
-		
-		private decimal _precio;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChimboChanging(int value);
-    partial void OnidChimboChanged();
-    partial void OnidCantidadChanging(System.Nullable<int> value);
-    partial void OnidCantidadChanged();
-    partial void OnpesoChanging(string value);
-    partial void OnpesoChanged();
-    partial void OnprecioChanging(decimal value);
-    partial void OnprecioChanged();
-    #endregion
-		
-		public Chimbo()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idChimbo", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idChimbo
-		{
-			get
-			{
-				return this._idChimbo;
-			}
-			set
-			{
-				if ((this._idChimbo != value))
-				{
-					this.OnidChimboChanging(value);
-					this.SendPropertyChanging();
-					this._idChimbo = value;
-					this.SendPropertyChanged("idChimbo");
-					this.OnidChimboChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCantidad", DbType="Int")]
-		public System.Nullable<int> idCantidad
-		{
-			get
-			{
-				return this._idCantidad;
-			}
-			set
-			{
-				if ((this._idCantidad != value))
-				{
-					this.OnidCantidadChanging(value);
-					this.SendPropertyChanging();
-					this._idCantidad = value;
-					this.SendPropertyChanged("idCantidad");
-					this.OnidCantidadChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_peso", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string peso
-		{
-			get
-			{
-				return this._peso;
-			}
-			set
-			{
-				if ((this._peso != value))
-				{
-					this.OnpesoChanging(value);
-					this.SendPropertyChanging();
-					this._peso = value;
-					this.SendPropertyChanged("peso");
-					this.OnpesoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_precio", DbType="Money NOT NULL")]
-		public decimal precio
-		{
-			get
-			{
-				return this._precio;
-			}
-			set
-			{
-				if ((this._precio != value))
-				{
-					this.OnprecioChanging(value);
-					this.SendPropertyChanging();
-					this._precio = value;
-					this.SendPropertyChanged("precio");
-					this.OnprecioChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -710,6 +580,131 @@ namespace PROJECT_ENA_GAS
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Chimbo")]
+	public partial class Chimbo
+	{
+		
+		private int _idChimbo;
+		
+		private int _cantidad;
+		
+		private string _peso;
+		
+		private decimal _precio;
+		
+		public Chimbo()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idChimbo", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int idChimbo
+		{
+			get
+			{
+				return this._idChimbo;
+			}
+			set
+			{
+				if ((this._idChimbo != value))
+				{
+					this._idChimbo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int NOT NULL")]
+		public int cantidad
+		{
+			get
+			{
+				return this._cantidad;
+			}
+			set
+			{
+				if ((this._cantidad != value))
+				{
+					this._cantidad = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_peso", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string peso
+		{
+			get
+			{
+				return this._peso;
+			}
+			set
+			{
+				if ((this._peso != value))
+				{
+					this._peso = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_precio", DbType="Money NOT NULL")]
+		public decimal precio
+		{
+			get
+			{
+				return this._precio;
+			}
+			set
+			{
+				if ((this._precio != value))
+				{
+					this._precio = value;
+				}
+			}
+		}
+	}
+	
+	public partial class EstadisticaResult
+	{
+		
+		private int _cantidad;
+		
+		private System.Nullable<int> _CANTIDAD1;
+		
+		public EstadisticaResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int NOT NULL")]
+		public int cantidad
+		{
+			get
+			{
+				return this._cantidad;
+			}
+			set
+			{
+				if ((this._cantidad != value))
+				{
+					this._cantidad = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CANTIDAD1", DbType="Int")]
+		public System.Nullable<int> CANTIDAD1
+		{
+			get
+			{
+				return this._CANTIDAD1;
+			}
+			set
+			{
+				if ((this._CANTIDAD1 != value))
+				{
+					this._CANTIDAD1 = value;
+				}
 			}
 		}
 	}

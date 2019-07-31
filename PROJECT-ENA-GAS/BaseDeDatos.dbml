@@ -14,14 +14,6 @@
       <Column Name="cargo" Member="cargoUsuario" Storage="_cargo1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="EnaGas.Chimbo" Member="Chimbo">
-    <Type Name="Chimbo">
-      <Column Name="idChimbo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="idCantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="peso" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="EnaGas.Inventario" Member="Inventario">
     <Type Name="Inventario">
       <Column Name="idCantidad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
@@ -40,6 +32,14 @@
       <Column Name="cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="EnaGas.Chimbo" Member="Chimbo">
+    <Type Name="Chimbo">
+      <Column Name="idChimbo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="peso" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="EnaGas.AGREGAR_CHIMBO" Method="AGREGAR_CHIMBO">
     <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
     <Parameter Name="precio" Type="System.Decimal" DbType="Money" />
@@ -55,5 +55,11 @@
     <Parameter Name="peso" Type="System.String" DbType="NVarChar(100)" />
     <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="EnaGas.Estadistica" Method="Estadistica">
+    <ElementType Name="EstadisticaResult">
+      <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CANTIDAD1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
   </Function>
 </Database>

@@ -36,46 +36,74 @@ namespace PROJECT_ENA_GAS
 
         private void BtnVender_Click(object sender, RoutedEventArgs e)
         {
+            var canti = (from d in dt.Inventario
+                         select d).FirstOrDefault();
 
-            dt.AGREGAR_VENTA(txtId.Text, txtNombre.Text, txtApellido.Text, txtNumero.Text, txtDireccion.Text, cmbPeso.Text, Convert.ToInt32(txtCantidad.Text));
-                MessageBox.Show("Dato almacenado");
-         }
-
-        private void BtnBuscar_Click(object sender, RoutedEventArgs e)
-        {
-            string iden = txtId.Text;
-            using (BaseDeDatosDataContext bdt=new BaseDeDatosDataContext())
+            if (canti.cantidad == 0)
             {
-                var exist = (from s in dt.ClientesEna
-                             where s.identidad == txtId.Text
-                             select s).FirstOrDefault();
-                IQueryable<ClientesEna> objClientes = from cl in bdt.ClientesEna
-                                                      where txtId.Text==cl.identidad
-                                                      select cl;
-                if (exist!=null)
-                {
-                    List<ClientesEna> lista = objClientes.ToList();
-                    var llenarCliente = lista[0];
-                    txtNombre.Text = llenarCliente.nombre;
-                    txtApellido.Text = llenarCliente.apellido;
-                    txtDireccion.Text = llenarCliente.direccion;
-                    txtNumero.Text = llenarCliente.telefono;
-                    cmbPeso.Text = llenarCliente.pesoC;
-                    txtCantidad.Text = llenarCliente.cantidad.ToString();
+                MessageBox.Show("No existen chimbos en el inventario");
 
-                    dtgClientes.ItemsSource = lista;
-                    MessageBox.Show("Cliente encontrado");
-           
-
-                    
-                }
-               else
-                {
-                    MessageBox.Show("El cliente no existe");
-                }
 
             }
-        }
+            else
+            {
+                if (canti.cantidad > 0)
+                {
+                    dt.AGREGAR_VENTA(txtId.Text, txtNombre.Text, txtApellido.Text, txtNumero.Text, txtDireccion.Text, cmbPeso.Text, Convert.ToInt32(txtCantidad.Text));
+                    MessageBox.Show("Dato almacenado");
+                    if (canti.cantidad == 5)
+                    {
+                        MessageBox.Show("Quedan pocos chimbos");
+                    }
+                }
+            }
+        } 
+
+        private void BtnBuscar_Click(object sender, RoutedEventArgs e)
+                {
+                    string iden = txtId.Text;
+                    using (BaseDeDatosDataContext bdt = new BaseDeDatosDataContext())
+                    {
+                var canti = (from d in dt.Inventario
+                             select d).FirstOrDefault();
+
+
+                var exist = (from s in dt.ClientesEna
+                                     where s.identidad == txtId.Text
+                                     select s).FirstOrDefault();
+                        IQueryable<ClientesEna> objClientes = from cl in bdt.ClientesEna
+                                                              where txtId.Text == cl.identidad
+                                                              select cl;
+                if (canti.cantidad == 5)
+                {
+                    MessageBox.Show("Quedan pocos chimbos");
+                }
+                if (exist != null)
+                        {
+                            List<ClientesEna> lista = objClientes.ToList();
+                            var llenarCliente = lista[0];
+                            txtNombre.Text = llenarCliente.nombre;
+                            txtApellido.Text = llenarCliente.apellido;
+                            txtDireccion.Text = llenarCliente.direccion;
+                            txtNumero.Text = llenarCliente.telefono;
+                            cmbPeso.Text = llenarCliente.pesoC;
+                            txtCantidad.Text = llenarCliente.cantidad.ToString();
+
+                            dtgClientes.ItemsSource = lista;
+                            MessageBox.Show("Cliente encontrado");
+
+
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("El cliente no existe");
+                        }
+                    }
+
+                }
+            
+        
 
         private void BtnSalir_Click(object sender, RoutedEventArgs e)
         {
