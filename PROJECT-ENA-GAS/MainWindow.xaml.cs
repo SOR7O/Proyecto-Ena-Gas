@@ -55,11 +55,11 @@ namespace PROJECT_ENA_GAS
         private void BtnEntrar_Click(object sender, RoutedEventArgs e)
         {
             var existeNombre = (from usuario in dt.Usuario
-                                where usuario.nombreUsuario == txtNombre.Text && usuario.contraseña == txtContraLogin.Text && usuario.cargo==lblUsu.SelectedValue.ToString()
+                                where usuario.nombreUsuario == txtNombre.Text && usuario.contraseña == txtContraLogin.Password.ToString() && usuario.cargo==lblUsu.SelectedValue.ToString()
                                 select usuario).FirstOrDefault();
 
 
-            if (txtNombre.Text == string.Empty || txtContraLogin.Text == string.Empty)
+            if (txtNombre.Text == string.Empty || txtContraLogin.Password == string.Empty)
             {
                 MessageBox.Show("No debe dejar ningun campo vacio");
             }

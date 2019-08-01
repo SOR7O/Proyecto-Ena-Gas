@@ -23,5 +23,27 @@ namespace PROJECT_ENA_GAS
         {
             InitializeComponent();
         }
+
+        private void BtnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void ListViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+            ClientesEmpleado clientesEmpleado = new ClientesEmpleado();
+            clientesEmpleado.Show();
+            this.Close();
+
+        }
+
+        private void ListViewItem_Selected_1(object sender, RoutedEventArgs e)
+        {
+            VentasEmpleado ventas = new VentasEmpleado();
+            ventas.Show();
+            this.Close();
+        }
     }
 }

@@ -17,7 +17,7 @@
             </Grid.Background>
             <TextBlock Text="Empleado" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Margin="588,16,390,14" Foreground="Black" FontWeight="Bold" Width="102"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Background="#FF7C1313" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button Background="#FF7C1313" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right" Name="btnSalir" Click="BtnSalir_Click">
                     <materialDesign:PackIcon  Foreground="#FF0A1636" Kind="Close" Width="25" Height="25" Background="#FF810E0E"/>
                 </Button>
             </StackPanel>
@@ -36,13 +36,13 @@
 
                 </Grid>
                 <ListView Foreground="Beige">
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItem_Selected">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Person" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Clientes" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Selected="ListViewItem_Selected_1">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="MoneyUsd" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Ventas" VerticalAlignment="Center" Margin="20 10 "/>

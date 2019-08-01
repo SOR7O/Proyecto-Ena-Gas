@@ -19,8 +19,8 @@
             <Border Background="White" Margin="10,200,0,20" CornerRadius="5" Height="314">
                 <StackPanel Margin="25">
                     <TextBox Foreground="Black" x:Name="txtNombre" Visibility="Visible" Margin="15" materialDesign:HintAssist.Hint="Nombre de usuario" materialDesign:HintAssist.IsFloating="True"/>
-                    <TextBox Foreground="Black" x:Name="txtContraLogin" Margin="15" materialDesign:HintAssist.Hint="Contraseña"/>
-                    <ComboBox Foreground="Black" FontWeight="Bold" Name="lblUsu" HorizontalAlignment="Left" Height="30" Margin="15" VerticalAlignment="Top" Width="248" />
+                    <PasswordBox Foreground="Black" x:Name="txtContraLogin" Margin="15" materialDesign:HintAssist.Hint="Contraseña"  materialDesign:HintAssist.IsFloating="True"/>
+                    <ComboBox Foreground="Black" Name="lblUsu" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Nivel de usuario"  Height="31" Margin="15,15,0,15"  materialDesign:HintAssist.IsFloating="False"  VerticalAlignment="Top" Width="248" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="34,30,30,0" Height="51">
                         <Button Margin="20 10" x:Name="btnCancelar" Content="Cancelar" Background="#06069b" Click="BtnCancelar_Click"/>
                         <Button Margin="15 10" x:Name="btnEntrar" Content="Entrar" Background="#06069b" Click="BtnEntrar_Click"/>

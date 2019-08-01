@@ -11,17 +11,16 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.ComponentModel;
 
 namespace PROJECT_ENA_GAS
 {
     /// <summary>
-    /// Lógica de interacción para Ventas.xaml
+    /// Lógica de interacción para VentasEmpleado.xaml
     /// </summary>
-    public partial class Ventas : Window
+    public partial class VentasEmpleado : Window
     {
         BaseDeDatosDataContext dt;
-        public Ventas()
+        public VentasEmpleado()
         {
             InitializeComponent();
             dt = new BaseDeDatosDataContext();
@@ -29,8 +28,8 @@ namespace PROJECT_ENA_GAS
 
         private void BtnRegresar_Click(object sender, RoutedEventArgs e)
         {
-            MenuGerente regresar = new MenuGerente();
-            regresar.Show();
+            MenuEmpleado menuEmpleado = new MenuEmpleado();
+            menuEmpleado.Show();
             this.Close();
         }
 
@@ -57,61 +56,55 @@ namespace PROJECT_ENA_GAS
                     }
                 }
             }
-        } 
+        }
 
         private void BtnBuscar_Click(object sender, RoutedEventArgs e)
-                {
-                    
-                    using (BaseDeDatosDataContext bdt = new BaseDeDatosDataContext())
-                    {
+        {
+            string iden = txtId.Text;
+            using (BaseDeDatosDataContext bdt = new BaseDeDatosDataContext())
+            {
                 var canti = (from d in dt.Inventario
                              select d).FirstOrDefault();
 
 
                 var exist = (from s in dt.ClientesEna
-                                     where s.identidad == txtId.Text
-                                     select s).FirstOrDefault();
-                        IQueryable<ClientesEna> objClientes = from cl in bdt.ClientesEna
-                                                              where txtId.Text == cl.identidad
-                                                              select cl;
+                             where s.identidad == txtId.Text
+                             select s).FirstOrDefault();
+                IQueryable<ClientesEna> objClientes = from cl in bdt.ClientesEna
+                                                      where txtId.Text == cl.identidad
+                                                      select cl;
                 if (canti.cantidad == 5)
                 {
                     MessageBox.Show("Quedan pocos chimbos");
                 }
                 if (exist != null)
-                        {
-                            List<ClientesEna> lista = objClientes.ToList();
-                            var llenarCliente = lista[0];
-                            txtNombre.Text = llenarCliente.nombre;
-                            txtApellido.Text = llenarCliente.apellido;
-                            txtDireccion.Text = llenarCliente.direccion;
-                            txtNumero.Text = llenarCliente.telefono;
-                            cmbPeso.Text = llenarCliente.pesoC;
-                            txtCantidad.Text = llenarCliente.cantidad.ToString();
+                {
+                    List<ClientesEna> lista = objClientes.ToList();
+                    var llenarCliente = lista[0];
+                    txtNombre.Text = llenarCliente.nombre;
+                    txtApellido.Text = llenarCliente.apellido;
+                    txtDireccion.Text = llenarCliente.direccion;
+                    txtNumero.Text = llenarCliente.telefono;
+                    cmbPeso.Text = llenarCliente.pesoC;
+                    txtCantidad.Text = llenarCliente.cantidad.ToString();
 
-                            dtgClientes.ItemsSource = lista;
-                            MessageBox.Show("Cliente encontrado");
+                    dtgClientes.ItemsSource = lista;
+                    MessageBox.Show("Cliente encontrado");
 
 
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("El cliente no existe");
-                        }
-                    }
 
                 }
-            
-        
+                else
+                {
+                    MessageBox.Show("El cliente no existe");
+                }
+            }
+
+        }
 
         private void BtnSalir_Click(object sender, RoutedEventArgs e)
         {
-            MenuGerente regresar = new MenuGerente();
-            regresar.Show();
-            this.Close();
+
         }
-
-
     }
 }

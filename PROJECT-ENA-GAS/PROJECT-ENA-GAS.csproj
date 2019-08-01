@@ -110,6 +110,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseDeDatos.dbml</DependentUpon>
     </Compile>
+    <Compile Include="ClientesEmpleado.xaml.cs">
+      <DependentUpon>ClientesEmpleado.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InventarioC.xaml.cs">
       <DependentUpon>InventarioC.xaml</DependentUpon>
     </Compile>
@@ -122,7 +125,14 @@
     <Compile Include="Ventas.xaml.cs">
       <DependentUpon>Ventas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VentasEmpleado.xaml.cs">
+      <DependentUpon>VentasEmpleado.xaml</DependentUpon>
+    </Compile>
     <Page Include="Acliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientesEmpleado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentasEmpleado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
