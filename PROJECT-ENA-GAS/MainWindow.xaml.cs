@@ -25,6 +25,7 @@ namespace PROJECT_ENA_GAS
         {
             InitializeComponent();
             dt = new BaseDeDatosDataContext();
+            LlenarU();
 
 
 
@@ -38,13 +39,23 @@ namespace PROJECT_ENA_GAS
         private void BtnCancelar_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+   
+        }
+        private void LlenarU()
+        {
+            BaseDeDatosDataContext dt = new BaseDeDatosDataContext();
+            var lista = (from x in dt.Cargo
+                         select new { x.cargoUsuario }).ToList();
+            lblUsu.DisplayMemberPath = "cargoUsuario";
+            lblUsu.SelectedItem = "cargoUsuario";
+            lblUsu.ItemsSource = lista;
 
         }
 
         private void BtnEntrar_Click(object sender, RoutedEventArgs e)
         {
             var existeNombre = (from usuario in dt.Usuario
-                                where usuario.nombreUsuario == txtNombre.Text && usuario.contraseña == txtContraLogin.Text
+                                where usuario.nombreUsuario == txtNombre.Text && usuario.contraseña == txtContraLogin.Text && usuario.cargo==lblUsu.SelectedValue.ToString()
                                 select usuario).FirstOrDefault();
 
 
@@ -55,16 +66,23 @@ namespace PROJECT_ENA_GAS
             else
             {
 
-                if (existeNombre != null)
+                if (existeNombre != null && lblUsu.SelectedValue.ToString()== "{ cargoUsuario = Administrador }")
                 {
                     MenuGerente menuGerente = new MenuGerente();
                     menuGerente.Show();
                     this.Close();
                 }
+               else if (existeNombre != null && lblUsu.SelectedValue.ToString() == "{ cargoUsuario = Empleado }")
+                {
+                    MenuEmpleado menuEmpleado = new MenuEmpleado();
+                    menuEmpleado.Show();
+                    this.Close();
+                }
                 else
                 {
-                    MessageBox.Show("El usuario no existe o contraseña incorrecta ");
+                    MessageBox.Show("El usuario no existe o contraseña incorrecta o nivel de usuario invalido ");
                 }
+                
             }
 
         }

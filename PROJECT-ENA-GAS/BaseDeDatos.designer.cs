@@ -30,12 +30,15 @@ namespace PROJECT_ENA_GAS
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnCreated();
-    partial void InsertUsuario(Usuario instance);
-    partial void UpdateUsuario(Usuario instance);
-    partial void DeleteUsuario(Usuario instance);
     partial void InsertClientesEna(ClientesEna instance);
     partial void UpdateClientesEna(ClientesEna instance);
     partial void DeleteClientesEna(ClientesEna instance);
+    partial void InsertCargo(Cargo instance);
+    partial void UpdateCargo(Cargo instance);
+    partial void DeleteCargo(Cargo instance);
+    partial void InsertUsuario(Usuario instance);
+    partial void UpdateUsuario(Usuario instance);
+    partial void DeleteUsuario(Usuario instance);
     #endregion
 		
 		public BaseDeDatosDataContext() : 
@@ -68,22 +71,6 @@ namespace PROJECT_ENA_GAS
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Usuario> Usuario
-		{
-			get
-			{
-				return this.GetTable<Usuario>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Cargo> Cargo
-		{
-			get
-			{
-				return this.GetTable<Cargo>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Inventario> Inventario
 		{
 			get
@@ -108,6 +95,22 @@ namespace PROJECT_ENA_GAS
 			}
 		}
 		
+		public System.Data.Linq.Table<Cargo> Cargo
+		{
+			get
+			{
+				return this.GetTable<Cargo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Usuario> Usuario
+		{
+			get
+			{
+				return this.GetTable<Usuario>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="EnaGas.AGREGAR_CHIMBO")]
 		public int AGREGAR_CHIMBO([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cantidad, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> precio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(20)")] string peso)
 		{
@@ -127,185 +130,6 @@ namespace PROJECT_ENA_GAS
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<EstadisticaResult>)(result.ReturnValue));
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Usuario")]
-	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idUsuario;
-		
-		private string _nombreUsuario;
-		
-		private string _contraseña;
-		
-		private string _cargo;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidUsuarioChanging(int value);
-    partial void OnidUsuarioChanged();
-    partial void OnnombreUsuarioChanging(string value);
-    partial void OnnombreUsuarioChanged();
-    partial void OncontraseñaChanging(string value);
-    partial void OncontraseñaChanged();
-    partial void OncargoChanging(string value);
-    partial void OncargoChanged();
-    #endregion
-		
-		public Usuario()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idUsuario
-		{
-			get
-			{
-				return this._idUsuario;
-			}
-			set
-			{
-				if ((this._idUsuario != value))
-				{
-					this.OnidUsuarioChanging(value);
-					this.SendPropertyChanging();
-					this._idUsuario = value;
-					this.SendPropertyChanged("idUsuario");
-					this.OnidUsuarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreUsuario", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string nombreUsuario
-		{
-			get
-			{
-				return this._nombreUsuario;
-			}
-			set
-			{
-				if ((this._nombreUsuario != value))
-				{
-					this.OnnombreUsuarioChanging(value);
-					this.SendPropertyChanging();
-					this._nombreUsuario = value;
-					this.SendPropertyChanged("nombreUsuario");
-					this.OnnombreUsuarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contraseña", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string contraseña
-		{
-			get
-			{
-				return this._contraseña;
-			}
-			set
-			{
-				if ((this._contraseña != value))
-				{
-					this.OncontraseñaChanging(value);
-					this.SendPropertyChanging();
-					this._contraseña = value;
-					this.SendPropertyChanged("contraseña");
-					this.OncontraseñaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cargo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string cargo
-		{
-			get
-			{
-				return this._cargo;
-			}
-			set
-			{
-				if ((this._cargo != value))
-				{
-					this.OncargoChanging(value);
-					this.SendPropertyChanging();
-					this._cargo = value;
-					this.SendPropertyChanged("cargo");
-					this.OncargoChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Cargo")]
-	public partial class Cargo
-	{
-		
-		private System.Nullable<int> _idCargo;
-		
-		private string _cargo1;
-		
-		public Cargo()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCargo", DbType="Int")]
-		public System.Nullable<int> idCargo
-		{
-			get
-			{
-				return this._idCargo;
-			}
-			set
-			{
-				if ((this._idCargo != value))
-				{
-					this._idCargo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="cargo", Storage="_cargo1", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string cargoUsuario
-		{
-			get
-			{
-				return this._cargo1;
-			}
-			set
-			{
-				if ((this._cargo1 != value))
-				{
-					this._cargo1 = value;
-				}
-			}
 		}
 	}
 	
@@ -661,6 +485,319 @@ namespace PROJECT_ENA_GAS
 				{
 					this._precio = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Cargo")]
+	public partial class Cargo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idCargo;
+		
+		private string _cargoUsuario;
+		
+		private EntitySet<Usuario> _Usuario;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidCargoChanging(int value);
+    partial void OnidCargoChanged();
+    partial void OncargoUsuarioChanging(string value);
+    partial void OncargoUsuarioChanged();
+    #endregion
+		
+		public Cargo()
+		{
+			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCargo", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idCargo
+		{
+			get
+			{
+				return this._idCargo;
+			}
+			set
+			{
+				if ((this._idCargo != value))
+				{
+					this.OnidCargoChanging(value);
+					this.SendPropertyChanging();
+					this._idCargo = value;
+					this.SendPropertyChanged("idCargo");
+					this.OnidCargoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cargoUsuario", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string cargoUsuario
+		{
+			get
+			{
+				return this._cargoUsuario;
+			}
+			set
+			{
+				if ((this._cargoUsuario != value))
+				{
+					this.OncargoUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._cargoUsuario = value;
+					this.SendPropertyChanged("cargoUsuario");
+					this.OncargoUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cargo_Usuario", Storage="_Usuario", ThisKey="idCargo", OtherKey="idCargo")]
+		public EntitySet<Usuario> Usuario
+		{
+			get
+			{
+				return this._Usuario;
+			}
+			set
+			{
+				this._Usuario.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Usuario(Usuario entity)
+		{
+			this.SendPropertyChanging();
+			entity.Cargo1 = this;
+		}
+		
+		private void detach_Usuario(Usuario entity)
+		{
+			this.SendPropertyChanging();
+			entity.Cargo1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Usuario")]
+	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idUsuario;
+		
+		private string _nombreUsuario;
+		
+		private string _contraseña;
+		
+		private System.Nullable<int> _idCargo;
+		
+		private string _cargo;
+		
+		private EntityRef<Cargo> _Cargo1;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidUsuarioChanging(int value);
+    partial void OnidUsuarioChanged();
+    partial void OnnombreUsuarioChanging(string value);
+    partial void OnnombreUsuarioChanged();
+    partial void OncontraseñaChanging(string value);
+    partial void OncontraseñaChanged();
+    partial void OnidCargoChanging(System.Nullable<int> value);
+    partial void OnidCargoChanged();
+    partial void OncargoChanging(string value);
+    partial void OncargoChanged();
+    #endregion
+		
+		public Usuario()
+		{
+			this._Cargo1 = default(EntityRef<Cargo>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idUsuario
+		{
+			get
+			{
+				return this._idUsuario;
+			}
+			set
+			{
+				if ((this._idUsuario != value))
+				{
+					this.OnidUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._idUsuario = value;
+					this.SendPropertyChanged("idUsuario");
+					this.OnidUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreUsuario", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string nombreUsuario
+		{
+			get
+			{
+				return this._nombreUsuario;
+			}
+			set
+			{
+				if ((this._nombreUsuario != value))
+				{
+					this.OnnombreUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._nombreUsuario = value;
+					this.SendPropertyChanged("nombreUsuario");
+					this.OnnombreUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contraseña", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string contraseña
+		{
+			get
+			{
+				return this._contraseña;
+			}
+			set
+			{
+				if ((this._contraseña != value))
+				{
+					this.OncontraseñaChanging(value);
+					this.SendPropertyChanging();
+					this._contraseña = value;
+					this.SendPropertyChanged("contraseña");
+					this.OncontraseñaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCargo", DbType="Int")]
+		public System.Nullable<int> idCargo
+		{
+			get
+			{
+				return this._idCargo;
+			}
+			set
+			{
+				if ((this._idCargo != value))
+				{
+					if (this._Cargo1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidCargoChanging(value);
+					this.SendPropertyChanging();
+					this._idCargo = value;
+					this.SendPropertyChanged("idCargo");
+					this.OnidCargoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cargo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string cargo
+		{
+			get
+			{
+				return this._cargo;
+			}
+			set
+			{
+				if ((this._cargo != value))
+				{
+					this.OncargoChanging(value);
+					this.SendPropertyChanging();
+					this._cargo = value;
+					this.SendPropertyChanged("cargo");
+					this.OncargoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cargo_Usuario", Storage="_Cargo1", ThisKey="idCargo", OtherKey="idCargo", IsForeignKey=true)]
+		public Cargo Cargo1
+		{
+			get
+			{
+				return this._Cargo1.Entity;
+			}
+			set
+			{
+				Cargo previousValue = this._Cargo1.Entity;
+				if (((previousValue != value) 
+							|| (this._Cargo1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Cargo1.Entity = null;
+						previousValue.Usuario.Remove(this);
+					}
+					this._Cargo1.Entity = value;
+					if ((value != null))
+					{
+						value.Usuario.Add(this);
+						this._idCargo = value.idCargo;
+					}
+					else
+					{
+						this._idCargo = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Cargo1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

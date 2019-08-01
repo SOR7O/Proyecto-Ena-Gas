@@ -15,13 +15,14 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Image x:Name="ENA_GASLogin_png" Margin="92,29,88,363" Source="ENA-GASLogin.png" Stretch="Fill"/>
-        <StackPanel Margin="50" RenderTransformOrigin="0.531,0.484">
-            <Border Background="White" Margin="10,200,0,20" CornerRadius="5" Height="251">
+        <StackPanel Margin="50,50,53,36" RenderTransformOrigin="0.531,0.484">
+            <Border Background="White" Margin="10,200,0,20" CornerRadius="5" Height="314">
                 <StackPanel Margin="25">
                     <TextBox Foreground="Black" x:Name="txtNombre" Visibility="Visible" Margin="15" materialDesign:HintAssist.Hint="Nombre de usuario" materialDesign:HintAssist.IsFloating="True"/>
                     <TextBox Foreground="Black" x:Name="txtContraLogin" Margin="15" materialDesign:HintAssist.Hint="Contraseña"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Margin="15 10" x:Name="btnCancelar" Content="Cancelar" Background="#06069b" Click="BtnCancelar_Click"/>
+                    <ComboBox Foreground="Black" FontWeight="Bold" Name="lblUsu" HorizontalAlignment="Left" Height="30" Margin="15" VerticalAlignment="Top" Width="248" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="34,30,30,0" Height="51">
+                        <Button Margin="20 10" x:Name="btnCancelar" Content="Cancelar" Background="#06069b" Click="BtnCancelar_Click"/>
                         <Button Margin="15 10" x:Name="btnEntrar" Content="Entrar" Background="#06069b" Click="BtnEntrar_Click"/>
                     </StackPanel>
                 </StackPanel>

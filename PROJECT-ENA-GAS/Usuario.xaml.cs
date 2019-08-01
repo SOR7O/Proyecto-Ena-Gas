@@ -56,6 +56,8 @@ namespace PROJECT_ENA_GAS
             var existe = (from us in dataContext.Usuario
                           where us.idUsuario == aUsu.idUsuario
                           select us).SingleOrDefault();
+
+
             if (existe == null)
             {
                 dataContext.Usuario.InsertOnSubmit(aUsu);
