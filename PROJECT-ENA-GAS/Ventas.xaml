@@ -29,10 +29,9 @@
         <TextBox Name="txtCantidad" HorizontalAlignment="Left" Height="36" Margin="46,479,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="382" Background="#FFC7C3B7" Foreground="Black" FontWeight="Bold"/>
         <Label Content="Cantidad" HorizontalAlignment="Left" Height="27" Margin="46,436,0,0" VerticalAlignment="Top" Width="99"/>
         <TextBox Name="cmbPeso" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Height="34" materialDesign:HintAssist.Hint="20 lbs,25 lbs o 30 lbs" Margin="44,540,0,0" VerticalAlignment="Top" Width="382" Background="#FFC9C9C9"/>
-        <Button Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Height="36" Margin="650,355,0,0" VerticalAlignment="Top" Width="121" Background="#06069b" Click="BtnAgregar_Click"/>
         <Button Name="btnVender" Content="Vender" HorizontalAlignment="Left" Height="36" Margin="501,355,0,0" VerticalAlignment="Top" Width="121" Background="#06069b" Click="BtnVender_Click"/>
-        <Button Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Height="36" Margin="800,355,0,0" VerticalAlignment="Top" Width="121" Background="#06069b" Click="BtnBuscar_Click"/>
-        <Button Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Height="36" Margin="950,355,0,0" VerticalAlignment="Top" Width="121" Background="#06069b" Click="BtnSalir_Click"/>
+        <Button Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Height="36" Margin="700,355,0,0" VerticalAlignment="Top" Width="121" Background="#06069b" Click="BtnBuscar_Click"/>
+        <Button Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Height="36" Margin="900,355,0,0" VerticalAlignment="Top" Width="121" Background="#06069b" Click="BtnSalir_Click"/>
         <Label Content="Peso" HorizontalAlignment="Left" Height="27" Margin="44,520,0,0" VerticalAlignment="Top" Width="99"/>
         <Image x:Name="ENA_GAS_png" Margin="612,107,122,265" Source="ENA-GAS2.png" Stretch="Fill"/>
         <DataGrid Margin="466,407,44,26" Name="dtgClientes"/>
