@@ -33,16 +33,16 @@ namespace PROJECT_ENA_GAS
     partial void InsertClientesEna(ClientesEna instance);
     partial void UpdateClientesEna(ClientesEna instance);
     partial void DeleteClientesEna(ClientesEna instance);
-    partial void InsertCargo(Cargo instance);
-    partial void UpdateCargo(Cargo instance);
-    partial void DeleteCargo(Cargo instance);
+    partial void InsertInventario(Inventario instance);
+    partial void UpdateInventario(Inventario instance);
+    partial void DeleteInventario(Inventario instance);
     partial void InsertUsuario(Usuario instance);
     partial void UpdateUsuario(Usuario instance);
     partial void DeleteUsuario(Usuario instance);
     #endregion
 		
 		public BaseDeDatosDataContext() : 
-				base(global::PROJECT_ENA_GAS.Properties.Settings.Default.ENAGASConnectionString, mappingSource)
+				base(global::PROJECT_ENA_GAS.Properties.Settings.Default.ENAGASConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -71,19 +71,11 @@ namespace PROJECT_ENA_GAS
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Inventario> Inventario
+		public System.Data.Linq.Table<Cargo> Cargo
 		{
 			get
 			{
-				return this.GetTable<Inventario>();
-			}
-		}
-		
-		public System.Data.Linq.Table<ClientesEna> ClientesEna
-		{
-			get
-			{
-				return this.GetTable<ClientesEna>();
+				return this.GetTable<Cargo>();
 			}
 		}
 		
@@ -95,11 +87,19 @@ namespace PROJECT_ENA_GAS
 			}
 		}
 		
-		public System.Data.Linq.Table<Cargo> Cargo
+		public System.Data.Linq.Table<ClientesEna> ClientesEna
 		{
 			get
 			{
-				return this.GetTable<Cargo>();
+				return this.GetTable<ClientesEna>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Inventario> Inventario
+		{
+			get
+			{
+				return this.GetTable<Inventario>();
 			}
 		}
 		
@@ -124,45 +124,87 @@ namespace PROJECT_ENA_GAS
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), identidad, nombre, apellido, direccion, telefono, peso, cantidad);
 			return ((int)(result.ReturnValue));
 		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="EnaGas.Estadistica")]
-		public ISingleResult<EstadisticaResult> Estadistica()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<EstadisticaResult>)(result.ReturnValue));
-		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Inventario")]
-	public partial class Inventario
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Cargo")]
+	public partial class Cargo
 	{
 		
-		private int _idCantidad;
+		private int _idCargo;
 		
-		private System.Nullable<int> _cantidad;
+		private string _cargoUsuario;
 		
-		public Inventario()
+		public Cargo()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCantidad", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int idCantidad
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCargo", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int idCargo
 		{
 			get
 			{
-				return this._idCantidad;
+				return this._idCargo;
 			}
 			set
 			{
-				if ((this._idCantidad != value))
+				if ((this._idCargo != value))
 				{
-					this._idCantidad = value;
+					this._idCargo = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int")]
-		public System.Nullable<int> cantidad
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cargoUsuario", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string cargoUsuario
+		{
+			get
+			{
+				return this._cargoUsuario;
+			}
+			set
+			{
+				if ((this._cargoUsuario != value))
+				{
+					this._cargoUsuario = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Chimbo")]
+	public partial class Chimbo
+	{
+		
+		private int _idChimbo;
+		
+		private int _cantidad;
+		
+		private string _peso;
+		
+		private decimal _precio;
+		
+		public Chimbo()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idChimbo", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int idChimbo
+		{
+			get
+			{
+				return this._idChimbo;
+			}
+			set
+			{
+				if ((this._idChimbo != value))
+				{
+					this._idChimbo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int NOT NULL")]
+		public int cantidad
 		{
 			get
 			{
@@ -173,6 +215,38 @@ namespace PROJECT_ENA_GAS
 				if ((this._cantidad != value))
 				{
 					this._cantidad = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_peso", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string peso
+		{
+			get
+			{
+				return this._peso;
+			}
+			set
+			{
+				if ((this._peso != value))
+				{
+					this._peso = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_precio", DbType="Money NOT NULL")]
+		public decimal precio
+		{
+			get
+			{
+				return this._precio;
+			}
+			set
+			{
+				if ((this._precio != value))
+				{
+					this._precio = value;
 				}
 			}
 		}
@@ -408,39 +482,52 @@ namespace PROJECT_ENA_GAS
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Chimbo")]
-	public partial class Chimbo
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Inventario")]
+	public partial class Inventario : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
-		private int _idChimbo;
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idCantidad;
 		
 		private int _cantidad;
 		
-		private string _peso;
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidCantidadChanging(int value);
+    partial void OnidCantidadChanged();
+    partial void OncantidadChanging(int value);
+    partial void OncantidadChanged();
+    #endregion
 		
-		private decimal _precio;
-		
-		public Chimbo()
+		public Inventario()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idChimbo", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int idChimbo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCantidad", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int idCantidad
 		{
 			get
 			{
-				return this._idChimbo;
+				return this._idCantidad;
 			}
 			set
 			{
-				if ((this._idChimbo != value))
+				if ((this._idCantidad != value))
 				{
-					this._idChimbo = value;
+					this.OnidCantidadChanging(value);
+					this.SendPropertyChanging();
+					this._idCantidad = value;
+					this.SendPropertyChanged("idCantidad");
+					this.OnidCantidadChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int cantidad
 		{
 			get
@@ -451,122 +538,12 @@ namespace PROJECT_ENA_GAS
 			{
 				if ((this._cantidad != value))
 				{
+					this.OncantidadChanging(value);
+					this.SendPropertyChanging();
 					this._cantidad = value;
+					this.SendPropertyChanged("cantidad");
+					this.OncantidadChanged();
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_peso", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string peso
-		{
-			get
-			{
-				return this._peso;
-			}
-			set
-			{
-				if ((this._peso != value))
-				{
-					this._peso = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_precio", DbType="Money NOT NULL")]
-		public decimal precio
-		{
-			get
-			{
-				return this._precio;
-			}
-			set
-			{
-				if ((this._precio != value))
-				{
-					this._precio = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Cargo")]
-	public partial class Cargo : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idCargo;
-		
-		private string _cargoUsuario;
-		
-		private EntitySet<Usuario> _Usuario;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidCargoChanging(int value);
-    partial void OnidCargoChanged();
-    partial void OncargoUsuarioChanging(string value);
-    partial void OncargoUsuarioChanged();
-    #endregion
-		
-		public Cargo()
-		{
-			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCargo", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idCargo
-		{
-			get
-			{
-				return this._idCargo;
-			}
-			set
-			{
-				if ((this._idCargo != value))
-				{
-					this.OnidCargoChanging(value);
-					this.SendPropertyChanging();
-					this._idCargo = value;
-					this.SendPropertyChanged("idCargo");
-					this.OnidCargoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cargoUsuario", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string cargoUsuario
-		{
-			get
-			{
-				return this._cargoUsuario;
-			}
-			set
-			{
-				if ((this._cargoUsuario != value))
-				{
-					this.OncargoUsuarioChanging(value);
-					this.SendPropertyChanging();
-					this._cargoUsuario = value;
-					this.SendPropertyChanged("cargoUsuario");
-					this.OncargoUsuarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cargo_Usuario", Storage="_Usuario", ThisKey="idCargo", OtherKey="idCargo")]
-		public EntitySet<Usuario> Usuario
-		{
-			get
-			{
-				return this._Usuario;
-			}
-			set
-			{
-				this._Usuario.Assign(value);
 			}
 		}
 		
@@ -589,18 +566,6 @@ namespace PROJECT_ENA_GAS
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_Usuario(Usuario entity)
-		{
-			this.SendPropertyChanging();
-			entity.Cargo1 = this;
-		}
-		
-		private void detach_Usuario(Usuario entity)
-		{
-			this.SendPropertyChanging();
-			entity.Cargo1 = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Usuario")]
@@ -615,11 +580,7 @@ namespace PROJECT_ENA_GAS
 		
 		private string _contraseña;
 		
-		private System.Nullable<int> _idCargo;
-		
 		private string _cargo;
-		
-		private EntityRef<Cargo> _Cargo1;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -631,15 +592,12 @@ namespace PROJECT_ENA_GAS
     partial void OnnombreUsuarioChanged();
     partial void OncontraseñaChanging(string value);
     partial void OncontraseñaChanged();
-    partial void OnidCargoChanging(System.Nullable<int> value);
-    partial void OnidCargoChanged();
     partial void OncargoChanging(string value);
     partial void OncargoChanged();
     #endregion
 		
 		public Usuario()
 		{
-			this._Cargo1 = default(EntityRef<Cargo>);
 			OnCreated();
 		}
 		
@@ -703,30 +661,6 @@ namespace PROJECT_ENA_GAS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCargo", DbType="Int")]
-		public System.Nullable<int> idCargo
-		{
-			get
-			{
-				return this._idCargo;
-			}
-			set
-			{
-				if ((this._idCargo != value))
-				{
-					if (this._Cargo1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidCargoChanging(value);
-					this.SendPropertyChanging();
-					this._idCargo = value;
-					this.SendPropertyChanged("idCargo");
-					this.OnidCargoChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cargo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string cargo
 		{
@@ -743,40 +677,6 @@ namespace PROJECT_ENA_GAS
 					this._cargo = value;
 					this.SendPropertyChanged("cargo");
 					this.OncargoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cargo_Usuario", Storage="_Cargo1", ThisKey="idCargo", OtherKey="idCargo", IsForeignKey=true)]
-		public Cargo Cargo1
-		{
-			get
-			{
-				return this._Cargo1.Entity;
-			}
-			set
-			{
-				Cargo previousValue = this._Cargo1.Entity;
-				if (((previousValue != value) 
-							|| (this._Cargo1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Cargo1.Entity = null;
-						previousValue.Usuario.Remove(this);
-					}
-					this._Cargo1.Entity = value;
-					if ((value != null))
-					{
-						value.Usuario.Add(this);
-						this._idCargo = value.idCargo;
-					}
-					else
-					{
-						this._idCargo = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Cargo1");
 				}
 			}
 		}
@@ -798,50 +698,6 @@ namespace PROJECT_ENA_GAS
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	public partial class EstadisticaResult
-	{
-		
-		private int _cantidad;
-		
-		private System.Nullable<int> _CANTIDAD1;
-		
-		public EstadisticaResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int NOT NULL")]
-		public int cantidad
-		{
-			get
-			{
-				return this._cantidad;
-			}
-			set
-			{
-				if ((this._cantidad != value))
-				{
-					this._cantidad = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CANTIDAD1", DbType="Int")]
-		public System.Nullable<int> CANTIDAD1
-		{
-			get
-			{
-				return this._CANTIDAD1;
-			}
-			set
-			{
-				if ((this._CANTIDAD1 != value))
-				{
-					this._CANTIDAD1 = value;
-				}
 			}
 		}
 	}

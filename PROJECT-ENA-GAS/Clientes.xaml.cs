@@ -45,7 +45,6 @@ namespace PROJECT_ENA_GAS
         private void BtnBuscar_Click(object sender, RoutedEventArgs e)
         {
 
-
         }
   
     }

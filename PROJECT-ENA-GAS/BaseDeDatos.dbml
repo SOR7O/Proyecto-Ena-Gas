@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ENAGAS" Class="BaseDeDatosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-H26444U\SQLEXPRESS;Initial Catalog=ENAGAS;Integrated Security=True" SettingsObjectName="PROJECT_ENA_GAS.Properties.Settings" SettingsPropertyName="ENAGASConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="EnaGas.Inventario" Member="Inventario">
-    <Type Name="Inventario">
-      <Column Name="idCantidad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-IDSTH1VH\SQLEXPRESS;Initial Catalog=ENAGAS;Integrated Security=True" SettingsObjectName="PROJECT_ENA_GAS.Properties.Settings" SettingsPropertyName="ENAGASConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="EnaGas.Cargo" Member="Cargo">
+    <Type Name="Cargo">
+      <Column Name="idCargo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cargoUsuario" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="EnaGas.Chimbo" Member="Chimbo">
+    <Type Name="Chimbo">
+      <Column Name="idChimbo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="peso" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="EnaGas.ClientesEna" Member="ClientesEna">
@@ -18,19 +26,10 @@
       <Column Name="cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="EnaGas.Chimbo" Member="Chimbo">
-    <Type Name="Chimbo">
-      <Column Name="idChimbo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="peso" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="EnaGas.Cargo" Member="Cargo">
-    <Type Name="Cargo">
-      <Column Name="idCargo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="cargoUsuario" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Cargo_Usuario" Member="Usuario" ThisKey="idCargo" OtherKey="idCargo" Type="Usuario" />
+  <Table Name="EnaGas.Inventario" Member="Inventario">
+    <Type Name="Inventario">
+      <Column Name="idCantidad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="EnaGas.Usuario" Member="Usuario">
@@ -38,9 +37,7 @@
       <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="nombreUsuario" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="contraseña" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="idCargo" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="cargo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Cargo_Usuario" Member="Cargo1" ThisKey="idCargo" OtherKey="idCargo" Type="Cargo" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="EnaGas.AGREGAR_CHIMBO" Method="AGREGAR_CHIMBO">
@@ -58,11 +55,5 @@
     <Parameter Name="peso" Type="System.String" DbType="NVarChar(100)" />
     <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
-  </Function>
-  <Function Name="EnaGas.Estadistica" Method="Estadistica">
-    <ElementType Name="EstadisticaResult">
-      <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CANTIDAD1" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
   </Function>
 </Database>

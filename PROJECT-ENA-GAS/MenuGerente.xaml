@@ -61,7 +61,7 @@
                     <ListViewItem Height="60" Selected="ListViewItemAñadirPersona">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="PersonAdd" Width="25" Height="25" VerticalAlignment="Center"/>
-                            <TextBlock Text="Añadir Persona" VerticalAlignment="Center" Margin="20 10 "/>
+                            <TextBlock Text="Añadir Chimbo" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60" Selected="ListViewItemAñadirUsuario">

@@ -33,5 +33,16 @@ namespace PROJECT_ENA_GAS.Properties {
                 return ((string)(this["ENAGASConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-IDSTH1VH\\SQLEXPRESS;Initial Catalog=ENAGAS;Integrated Security" +
+            "=True")]
+        public string ENAGASConnectionString1 {
+            get {
+                return ((string)(this["ENAGASConnectionString1"]));
+            }
+        }
     }
 }
