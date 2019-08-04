@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using System.Configuration;
+
 
 namespace PROJECT_ENA_GAS
 {
@@ -25,6 +27,7 @@ namespace PROJECT_ENA_GAS
         {
             InitializeComponent();
             dt = new BaseDeDatosDataContext();
+
         }
 
         private void BtnRegresar_Click(object sender, RoutedEventArgs e)
@@ -112,6 +115,9 @@ namespace PROJECT_ENA_GAS
             this.Close();
         }
 
+        private void BtnAgregar_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }

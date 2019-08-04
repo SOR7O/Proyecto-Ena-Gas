@@ -21,9 +21,12 @@ namespace PROJECT_ENA_GAS
     /// </summary>
     public partial class Reporte : Window
     {
+        BaseDeDatosDataContext dt;
         public Reporte()
         {
             InitializeComponent();
+            dt = new BaseDeDatosDataContext();
+            MostrarIngresos();
         }
 
         private void BtnSalir_Click(object sender, RoutedEventArgs e)
@@ -60,11 +63,13 @@ namespace PROJECT_ENA_GAS
             return can;
         }
 
-        private void BtnRegresa_Click(object sender, RoutedEventArgs e)
-        {
-            chColor.DataContext = GenerarGrafico();
-            //chColor.Series[0]= "cantidad";
 
+        private void MostrarIngresos()
+        {    
+                var lista = from cl in dt.Chimbo
+                            select cl;
+                dtgReporte.ItemsSource = lista;
         }
+
     }
 }

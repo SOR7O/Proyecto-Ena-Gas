@@ -18,13 +18,7 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <DVC:Chart Name="chColor"  BorderBrush="Chocolate" Margin="442,121,69,187">
-            <DV:AreaSeries Name="Series1" Title="Id cantidad"></DV:AreaSeries>
-            <DVC:AreaSeries Name="Cantidad" Title="Cantidad"></DVC:AreaSeries>
-        </DVC:Chart>
-
-        <DataGrid HorizontalAlignment="Left" Height="292" Margin="73,121,0,0" VerticalAlignment="Top" Width="364"/>
+        <DataGrid Name="dtgReporte" HorizontalAlignment="Left" Height="292" Margin="40,121,0,0" VerticalAlignment="Top" Width="1000"/>
         <Button Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Height="47" Margin="482,445,0,0" VerticalAlignment="Top" Width="129" Background="#06069b" Click="BtnRegresar_Click_1"/>
-        <Button Name="btnRegresa" Content="Regresar" HorizontalAlignment="Left" Height="47" Margin="700,445,0,0" VerticalAlignment="Top" Width="129" Background="#06069b" Click="BtnRegresa_Click"/>
     </Grid>
 </Window>
