@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace PROJECT_ENA_GAS
 {
@@ -25,7 +26,20 @@ namespace PROJECT_ENA_GAS
             InitializeComponent();
             dt = new BaseDeDatosDataContext();
             llenar();
-   
+
+            startClock();
+        }
+        private void startClock()
+        {
+            DispatcherTimer hora = new DispatcherTimer();
+            hora.Tick += tickEvent;
+            hora.Start();
+
+        }
+
+        private void tickEvent(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToString();
         }
         private void llenar()
         {
@@ -45,8 +59,38 @@ namespace PROJECT_ENA_GAS
         private void BtnBuscar_Click(object sender, RoutedEventArgs e)
         {
 
+            using (BaseDeDatosDataContext bdt = new BaseDeDatosDataContext())
+            {
+                var canti = (from d in dt.Inventario
+                             select d).FirstOrDefault();
+
+
+                var exist = (from s in dt.ClientesEna
+                             where s.identidad ==buscarCliente.Text
+                             select s).FirstOrDefault();
+                IQueryable<ClientesEna> objClientes = from cl in bdt.ClientesEna
+                                                      where buscarCliente.Text == cl.identidad
+                                                      select cl;
+                if (canti.cantidad == 5)
+                {
+                    MessageBox.Show("Quedan pocos chimbos");
+                }
+                if (exist != null)
+                {
+                    List<ClientesEna> lista = objClientes.ToList();
+                    dtgClientes.ItemsSource = lista;
+                    MessageBox.Show("Cliente encontrado", "Mensaje", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+
+                }
+                else
+                {
+                    MessageBox.Show("El cliente no existe");
+                }
+            }
+
+
 
         }
-  
+
     }
 }

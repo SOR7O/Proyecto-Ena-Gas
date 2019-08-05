@@ -21,9 +21,12 @@ namespace PROJECT_ENA_GAS
     /// </summary>
     public partial class Reporte : Window
     {
+        BaseDeDatosDataContext dt;
         public Reporte()
         {
             InitializeComponent();
+            dt = new BaseDeDatosDataContext();
+            llenar();
         }
 
         private void BtnSalir_Click(object sender, RoutedEventArgs e)
@@ -33,38 +36,23 @@ namespace PROJECT_ENA_GAS
             this.Close();
         }
 
-        private void BtnRegresar_Click_1(object sender, RoutedEventArgs e)
+        
+        private void llenar()
         {
-            MenuGerente regresar = new MenuGerente();
-            regresar.Show();
-            this.Close();
-        }
-        public static List<object> GenerarGrafico()
-            {
-                BaseDeDatosDataContext bdt = new BaseDeDatosDataContext();
-            var query = bdt.Chimbo.
-                     Select(ci => new
-                     {
-                         Chimbo = ci.cantidad,
-                         Cantidad = ObtenerValores(ci.cantidad)
-                     }).ToList<object>() ;
-            return query;
-            } 
-        public static int ObtenerValores(int cantidad)
-        {
-            int can=0;
-            BaseDeDatosDataContext dt = new BaseDeDatosDataContext();
-            var query = dt.Chimbo.Where(pc => pc.idChimbo == cantidad).Select(pc => pc);
-            if (query.Count()>0)
-            can = query.Count();
-            return can;
+            var lista = from cl in dt.TotalVenta
+                        select cl;
+            dtgReporte.ItemsSource = lista;
+
         }
 
         private void BtnRegresa_Click(object sender, RoutedEventArgs e)
         {
-            chColor.DataContext = GenerarGrafico();
-            //chColor.Series[0]= "cantidad";
+            MenuGerente regresar = new MenuGerente();
+            regresar.Show();
+            this.Close();
 
         }
+
+        
     }
 }

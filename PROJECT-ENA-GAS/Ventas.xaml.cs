@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using System.ComponentModel;
 
 namespace PROJECT_ENA_GAS
@@ -25,38 +26,99 @@ namespace PROJECT_ENA_GAS
         {
             InitializeComponent();
             dt = new BaseDeDatosDataContext();
+            startClock();
+
+        }
+        private void startClock()
+        {
+            DispatcherTimer hora = new DispatcherTimer();
+            hora.Tick += tickEvent;
+            hora.Start();
+
         }
 
+        private void tickEvent(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToString();
+        }
         private void BtnRegresar_Click(object sender, RoutedEventArgs e)
         {
             MenuGerente regresar = new MenuGerente();
             regresar.Show();
             this.Close();
         }
+        
 
         private void BtnVender_Click(object sender, RoutedEventArgs e)
         {
-            var canti = (from d in dt.Inventario
-                         select d).FirstOrDefault();
+            using (BaseDeDatosDataContext bdt = new BaseDeDatosDataContext())
+            {                IQueryable<TotalVenta> totalVentas = from t in dt.TotalVenta
+                                                     orderby t.idTotal descending
+                                                     select t;
 
-            if (canti.cantidad == 0)
-            {
-                MessageBox.Show("No existen chimbos en el inventario");
+                IQueryable<ClientesEna> objClientes = from cl in bdt.ClientesEna
+                                                      where txtId.Text == cl.identidad
+                                                      select cl;
+
+                var canti = (from d in dt.Inventario
+                             select d).FirstOrDefault();
+                var precio = (from p in dt.Chimbo
+                              where p.peso==cmbPeso.Text
+                              select p).FirstOrDefault();
+
+                var cantidadMenor = (from cm in dt.Chimbo
+                                     where cm.peso == cmbPeso.Text && cm.cantidad == 0
+                                     select cm).FirstOrDefault();
 
 
-            }
-            else
-            {
-                if (canti.cantidad > 0)
+                if (canti.cantidad == 0)
                 {
-                    dt.AGREGAR_VENTA(txtId.Text, txtNombre.Text, txtApellido.Text, txtNumero.Text, txtDireccion.Text, cmbPeso.Text, Convert.ToInt32(txtCantidad.Text));
-                    MessageBox.Show("Dato almacenado");
-                    if (canti.cantidad == 5)
+                    MessageBox.Show("No existen chimbos en el inventario");
+
+                }
+                else
+                {
+                    if (cantidadMenor ==null)
                     {
-                        MessageBox.Show("Quedan pocos chimbos");
+                        if (precio != null)
+                        {
+                            {
+                                if (canti.cantidad > 0)
+                                {
+
+                                    dt.AGREGAR_VENTA(txtId.Text, txtNombre.Text, txtApellido.Text, txtNumero.Text, txtDireccion.Text, cmbPeso.Text, Convert.ToInt32(txtCantidad.Text));
+                                    dt.TOTAL_VENTA(Convert.ToInt32(txtCantidad.Text), cmbPeso.Text);
+                                    List<ClientesEna> lista = objClientes.ToList(); List<ClientesEna> listax = objClientes.ToList();
+                                    dtgClientes.ItemsSource = listax;
+                                    MessageBox.Show("Dato almacenado");
+                                    if (canti.cantidad == 5)
+                                    {
+                                        MessageBox.Show("Quedan pocos chimbos");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Lo sentimos no hay chimbos en existencia");
+                                }
+
+                            }
+                        }
                     }
+                    else
+                    {
+                        MessageBox.Show("Lo sentimos no existen chimbos del peso requerido","Mensaje",MessageBoxButton.OK,MessageBoxImage.Information);
+                    }
+
+                    var totalDeVenta = (from t in dt.TotalVenta
+                                        orderby t.idTotal descending
+                                        select t).FirstOrDefault();
+
+                    lblTotal.Text = totalDeVenta.totalVenta1.ToString();
                 }
             }
+            
+
+
         } 
 
         private void BtnBuscar_Click(object sender, RoutedEventArgs e)
@@ -88,11 +150,8 @@ namespace PROJECT_ENA_GAS
                             txtNumero.Text = llenarCliente.telefono;
                             cmbPeso.Text = llenarCliente.pesoC;
                             txtCantidad.Text = llenarCliente.cantidad.ToString();
-
                             dtgClientes.ItemsSource = lista;
-                            MessageBox.Show("Cliente encontrado");
-
-
+                            MessageBox.Show("Cliente encontrado","Mensaje",MessageBoxButton.OK,MessageBoxImage.Asterisk);
 
                         }
                         else
@@ -102,7 +161,7 @@ namespace PROJECT_ENA_GAS
                     }
 
                 }
-            
+         
         
 
         private void BtnSalir_Click(object sender, RoutedEventArgs e)

@@ -9,6 +9,7 @@
         Title="Persona" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
     <Grid Background="LightGray" Margin="0,-12,0,12">
         <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
+            <TextBlock Name="lblHora" Margin="844,15,96,15" />
             <TextBlock Text="Añadir Chimbo" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="btnRegresar" Background="#FFEA1616" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right" Click="BtnRegresar_Click">
@@ -23,7 +24,7 @@
         <Label HorizontalAlignment="Left" Height="49" Margin="56,147,0,0" Content="Cantidad" VerticalAlignment="Top" Width="101" Foreground="#FF0E0808" FontSize="22"/>
         <Label Content="Peso" HorizontalAlignment="Left" Height="49" Margin="56,233,0,0"  VerticalAlignment="Top" Width="101" Foreground="#FF0E0808" FontSize="22"/>
         <Label HorizontalAlignment="Left" Height="49" Margin="56,320,0,0" Content="Precio" VerticalAlignment="Top" Width="123" Foreground="#FF0E0808" FontSize="22"/>
-        <Button Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Height="59" Margin="474,500,0,0" VerticalAlignment="Top" Width="167" FontSize="20" Background="#06069b" Click="BtnAgregar_Click"/>
+        <Button Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Height="59" Margin="474,500,0,0" VerticalAlignment="Top" Width="167" FontSize="20" Background="#06069b" Click="BtnAgregar_Click" materialDesign:HintAssist.Hint="20 lbs, 25 lbs 30 lbs" materialDesign:HintAssist.IsFloating="False"/>
         <TextBox Name="txtPeso" HorizontalAlignment="Left" Height="49" Margin="179,233,0,0" VerticalAlignment="Top" Width="824" Background="#FFC1B5B5"/>
     </Grid>
 </Window>

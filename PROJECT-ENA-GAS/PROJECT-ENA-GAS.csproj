@@ -116,8 +116,8 @@
     <Compile Include="InventarioC.xaml.cs">
       <DependentUpon>InventarioC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Persona.xaml.cs">
-      <DependentUpon>Persona.xaml</DependentUpon>
+    <Compile Include="Chimbo.xaml.cs">
+      <DependentUpon>Chimbo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Reporte.xaml.cs">
       <DependentUpon>Reporte.xaml</DependentUpon>
@@ -140,7 +140,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Persona.xaml">
+    <Page Include="Chimbo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

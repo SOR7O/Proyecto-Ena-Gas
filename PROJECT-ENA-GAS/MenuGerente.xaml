@@ -9,8 +9,9 @@
         Title="MenuGerente" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
     <Grid Background="LightGray" Margin="0,-12,0,12">
         <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
+            <TextBlock Name="lblHora" Margin="880,15,60,15" />
             <TextBlock Text="Administrador" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" RenderTransformOrigin="1.481,0.62" Margin="543,21,390,10" Width="147"/>
-            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+              <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="BtnCerrar" Background="#FF7C1313" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right" Click="BtnCerrar_Click">
                     <materialDesign:PackIcon  Foreground="#FF0A1636" Kind="Close" Width="25" Height="25" Background="#FF810E0E"/>
                 </Button>
@@ -61,7 +62,7 @@
                     <ListViewItem Height="60" Selected="ListViewItemAñadirPersona">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="PersonAdd" Width="25" Height="25" VerticalAlignment="Center"/>
-                            <TextBlock Text="Añadir Persona" VerticalAlignment="Center" Margin="20 10 "/>
+                            <TextBlock Text="Añadir Chimbos" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60" Selected="ListViewItemAñadirUsuario">
@@ -72,7 +73,7 @@
                     </ListViewItem>
                 </ListView>
             </StackPanel>
-            <Image x:Name="ENA_GAS_png" Margin="0,0,0,452" Source="ENA-GAS.png" Stretch="Fill"/>
+            <Image x:Name="ENA_GAS3_png" Margin="0,0,0,452" Source="ENA-GAS3.png" Stretch="Fill"/>
         </Grid>
     </Grid>
 </Window>

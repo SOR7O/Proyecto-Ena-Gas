@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace PROJECT_ENA_GAS
 {
@@ -24,6 +25,19 @@ namespace PROJECT_ENA_GAS
         {
             InitializeComponent();
             dt = new BaseDeDatosDataContext();
+            startClock();
+        }
+        private void startClock()
+        {
+            DispatcherTimer hora = new DispatcherTimer();
+            hora.Tick += tickEvent;
+            hora.Start();
+
+        }
+
+        private void tickEvent(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToString();
         }
         private void llenar()
         {

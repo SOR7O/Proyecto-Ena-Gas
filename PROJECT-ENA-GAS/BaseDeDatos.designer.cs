@@ -30,15 +30,18 @@ namespace PROJECT_ENA_GAS
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnCreated();
-    partial void InsertClientesEna(ClientesEna instance);
-    partial void UpdateClientesEna(ClientesEna instance);
-    partial void DeleteClientesEna(ClientesEna instance);
     partial void InsertCargo(Cargo instance);
     partial void UpdateCargo(Cargo instance);
     partial void DeleteCargo(Cargo instance);
     partial void InsertUsuario(Usuario instance);
     partial void UpdateUsuario(Usuario instance);
     partial void DeleteUsuario(Usuario instance);
+    partial void InsertTotalVenta(TotalVenta instance);
+    partial void UpdateTotalVenta(TotalVenta instance);
+    partial void DeleteTotalVenta(TotalVenta instance);
+    partial void InsertClientesEna(ClientesEna instance);
+    partial void UpdateClientesEna(ClientesEna instance);
+    partial void DeleteClientesEna(ClientesEna instance);
     #endregion
 		
 		public BaseDeDatosDataContext() : 
@@ -79,14 +82,6 @@ namespace PROJECT_ENA_GAS
 			}
 		}
 		
-		public System.Data.Linq.Table<ClientesEna> ClientesEna
-		{
-			get
-			{
-				return this.GetTable<ClientesEna>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Chimbo> Chimbo
 		{
 			get
@@ -111,6 +106,22 @@ namespace PROJECT_ENA_GAS
 			}
 		}
 		
+		public System.Data.Linq.Table<TotalVenta> TotalVenta
+		{
+			get
+			{
+				return this.GetTable<TotalVenta>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ClientesEna> ClientesEna
+		{
+			get
+			{
+				return this.GetTable<ClientesEna>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="EnaGas.AGREGAR_CHIMBO")]
 		public int AGREGAR_CHIMBO([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cantidad, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> precio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(20)")] string peso)
 		{
@@ -125,11 +136,11 @@ namespace PROJECT_ENA_GAS
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="EnaGas.Estadistica")]
-		public ISingleResult<EstadisticaResult> Estadistica()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="EnaGas.TOTAL_VENTA")]
+		public int TOTAL_VENTA([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cantidad, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string peso)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<EstadisticaResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cantidad, peso);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -174,236 +185,6 @@ namespace PROJECT_ENA_GAS
 				{
 					this._cantidad = value;
 				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.ClientesEna")]
-	public partial class ClientesEna : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idCliente;
-		
-		private string _identidad;
-		
-		private string _nombre;
-		
-		private string _apellido;
-		
-		private string _direccion;
-		
-		private string _telefono;
-		
-		private string _pesoC;
-		
-		private System.Nullable<int> _cantidad;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidClienteChanging(int value);
-    partial void OnidClienteChanged();
-    partial void OnidentidadChanging(string value);
-    partial void OnidentidadChanged();
-    partial void OnnombreChanging(string value);
-    partial void OnnombreChanged();
-    partial void OnapellidoChanging(string value);
-    partial void OnapellidoChanged();
-    partial void OndireccionChanging(string value);
-    partial void OndireccionChanged();
-    partial void OntelefonoChanging(string value);
-    partial void OntelefonoChanged();
-    partial void OnpesoCChanging(string value);
-    partial void OnpesoCChanged();
-    partial void OncantidadChanging(System.Nullable<int> value);
-    partial void OncantidadChanged();
-    #endregion
-		
-		public ClientesEna()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCliente", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idCliente
-		{
-			get
-			{
-				return this._idCliente;
-			}
-			set
-			{
-				if ((this._idCliente != value))
-				{
-					this.OnidClienteChanging(value);
-					this.SendPropertyChanging();
-					this._idCliente = value;
-					this.SendPropertyChanged("idCliente");
-					this.OnidClienteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_identidad", DbType="VarChar(13) NOT NULL", CanBeNull=false)]
-		public string identidad
-		{
-			get
-			{
-				return this._identidad;
-			}
-			set
-			{
-				if ((this._identidad != value))
-				{
-					this.OnidentidadChanging(value);
-					this.SendPropertyChanging();
-					this._identidad = value;
-					this.SendPropertyChanged("identidad");
-					this.OnidentidadChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string nombre
-		{
-			get
-			{
-				return this._nombre;
-			}
-			set
-			{
-				if ((this._nombre != value))
-				{
-					this.OnnombreChanging(value);
-					this.SendPropertyChanging();
-					this._nombre = value;
-					this.SendPropertyChanged("nombre");
-					this.OnnombreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string apellido
-		{
-			get
-			{
-				return this._apellido;
-			}
-			set
-			{
-				if ((this._apellido != value))
-				{
-					this.OnapellidoChanging(value);
-					this.SendPropertyChanging();
-					this._apellido = value;
-					this.SendPropertyChanged("apellido");
-					this.OnapellidoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccion", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string direccion
-		{
-			get
-			{
-				return this._direccion;
-			}
-			set
-			{
-				if ((this._direccion != value))
-				{
-					this.OndireccionChanging(value);
-					this.SendPropertyChanging();
-					this._direccion = value;
-					this.SendPropertyChanged("direccion");
-					this.OndireccionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_telefono", DbType="VarChar(100)")]
-		public string telefono
-		{
-			get
-			{
-				return this._telefono;
-			}
-			set
-			{
-				if ((this._telefono != value))
-				{
-					this.OntelefonoChanging(value);
-					this.SendPropertyChanging();
-					this._telefono = value;
-					this.SendPropertyChanged("telefono");
-					this.OntelefonoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pesoC", DbType="NVarChar(100)")]
-		public string pesoC
-		{
-			get
-			{
-				return this._pesoC;
-			}
-			set
-			{
-				if ((this._pesoC != value))
-				{
-					this.OnpesoCChanging(value);
-					this.SendPropertyChanging();
-					this._pesoC = value;
-					this.SendPropertyChanged("pesoC");
-					this.OnpesoCChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int")]
-		public System.Nullable<int> cantidad
-		{
-			get
-			{
-				return this._cantidad;
-			}
-			set
-			{
-				if ((this._cantidad != value))
-				{
-					this.OncantidadChanging(value);
-					this.SendPropertyChanging();
-					this._cantidad = value;
-					this.SendPropertyChanged("cantidad");
-					this.OncantidadChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -802,19 +583,311 @@ namespace PROJECT_ENA_GAS
 		}
 	}
 	
-	public partial class EstadisticaResult
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.TotalVenta")]
+	public partial class TotalVenta : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
-		private int _cantidad;
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private System.Nullable<int> _CANTIDAD1;
+		private int _idTotal;
 		
-		public EstadisticaResult()
+		private System.Nullable<decimal> _totalVenta1;
+		
+		private System.Nullable<System.DateTime> _fecha;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidTotalChanging(int value);
+    partial void OnidTotalChanged();
+    partial void OntotalVenta1Changing(System.Nullable<decimal> value);
+    partial void OntotalVenta1Changed();
+    partial void OnfechaChanging(System.Nullable<System.DateTime> value);
+    partial void OnfechaChanged();
+    #endregion
+		
+		public TotalVenta()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int NOT NULL")]
-		public int cantidad
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTotal", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idTotal
+		{
+			get
+			{
+				return this._idTotal;
+			}
+			set
+			{
+				if ((this._idTotal != value))
+				{
+					this.OnidTotalChanging(value);
+					this.SendPropertyChanging();
+					this._idTotal = value;
+					this.SendPropertyChanged("idTotal");
+					this.OnidTotalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="totalVenta", Storage="_totalVenta1", DbType="Money")]
+		public System.Nullable<decimal> totalVenta1
+		{
+			get
+			{
+				return this._totalVenta1;
+			}
+			set
+			{
+				if ((this._totalVenta1 != value))
+				{
+					this.OntotalVenta1Changing(value);
+					this.SendPropertyChanging();
+					this._totalVenta1 = value;
+					this.SendPropertyChanged("totalVenta1");
+					this.OntotalVenta1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha", DbType="DateTime")]
+		public System.Nullable<System.DateTime> fecha
+		{
+			get
+			{
+				return this._fecha;
+			}
+			set
+			{
+				if ((this._fecha != value))
+				{
+					this.OnfechaChanging(value);
+					this.SendPropertyChanging();
+					this._fecha = value;
+					this.SendPropertyChanged("fecha");
+					this.OnfechaChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.ClientesEna")]
+	public partial class ClientesEna : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idCliente;
+		
+		private string _identidad;
+		
+		private string _nombre;
+		
+		private string _apellido;
+		
+		private string _direccion;
+		
+		private string _telefono;
+		
+		private string _pesoC;
+		
+		private System.Nullable<int> _cantidad;
+		
+		private System.Nullable<System.DateTime> _fecha;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidClienteChanging(int value);
+    partial void OnidClienteChanged();
+    partial void OnidentidadChanging(string value);
+    partial void OnidentidadChanged();
+    partial void OnnombreChanging(string value);
+    partial void OnnombreChanged();
+    partial void OnapellidoChanging(string value);
+    partial void OnapellidoChanged();
+    partial void OndireccionChanging(string value);
+    partial void OndireccionChanged();
+    partial void OntelefonoChanging(string value);
+    partial void OntelefonoChanged();
+    partial void OnpesoCChanging(string value);
+    partial void OnpesoCChanged();
+    partial void OncantidadChanging(System.Nullable<int> value);
+    partial void OncantidadChanged();
+    partial void OnfechaChanging(System.Nullable<System.DateTime> value);
+    partial void OnfechaChanged();
+    #endregion
+		
+		public ClientesEna()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCliente", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idCliente
+		{
+			get
+			{
+				return this._idCliente;
+			}
+			set
+			{
+				if ((this._idCliente != value))
+				{
+					this.OnidClienteChanging(value);
+					this.SendPropertyChanging();
+					this._idCliente = value;
+					this.SendPropertyChanged("idCliente");
+					this.OnidClienteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_identidad", DbType="VarChar(13) NOT NULL", CanBeNull=false)]
+		public string identidad
+		{
+			get
+			{
+				return this._identidad;
+			}
+			set
+			{
+				if ((this._identidad != value))
+				{
+					this.OnidentidadChanging(value);
+					this.SendPropertyChanging();
+					this._identidad = value;
+					this.SendPropertyChanged("identidad");
+					this.OnidentidadChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this.OnnombreChanging(value);
+					this.SendPropertyChanging();
+					this._nombre = value;
+					this.SendPropertyChanged("nombre");
+					this.OnnombreChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string apellido
+		{
+			get
+			{
+				return this._apellido;
+			}
+			set
+			{
+				if ((this._apellido != value))
+				{
+					this.OnapellidoChanging(value);
+					this.SendPropertyChanging();
+					this._apellido = value;
+					this.SendPropertyChanged("apellido");
+					this.OnapellidoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccion", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string direccion
+		{
+			get
+			{
+				return this._direccion;
+			}
+			set
+			{
+				if ((this._direccion != value))
+				{
+					this.OndireccionChanging(value);
+					this.SendPropertyChanging();
+					this._direccion = value;
+					this.SendPropertyChanged("direccion");
+					this.OndireccionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_telefono", DbType="VarChar(100)")]
+		public string telefono
+		{
+			get
+			{
+				return this._telefono;
+			}
+			set
+			{
+				if ((this._telefono != value))
+				{
+					this.OntelefonoChanging(value);
+					this.SendPropertyChanging();
+					this._telefono = value;
+					this.SendPropertyChanged("telefono");
+					this.OntelefonoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pesoC", DbType="NVarChar(100)")]
+		public string pesoC
+		{
+			get
+			{
+				return this._pesoC;
+			}
+			set
+			{
+				if ((this._pesoC != value))
+				{
+					this.OnpesoCChanging(value);
+					this.SendPropertyChanging();
+					this._pesoC = value;
+					this.SendPropertyChanged("pesoC");
+					this.OnpesoCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int")]
+		public System.Nullable<int> cantidad
 		{
 			get
 			{
@@ -824,24 +897,52 @@ namespace PROJECT_ENA_GAS
 			{
 				if ((this._cantidad != value))
 				{
+					this.OncantidadChanging(value);
+					this.SendPropertyChanging();
 					this._cantidad = value;
+					this.SendPropertyChanged("cantidad");
+					this.OncantidadChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CANTIDAD1", DbType="Int")]
-		public System.Nullable<int> CANTIDAD1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha", DbType="DateTime")]
+		public System.Nullable<System.DateTime> fecha
 		{
 			get
 			{
-				return this._CANTIDAD1;
+				return this._fecha;
 			}
 			set
 			{
-				if ((this._CANTIDAD1 != value))
+				if ((this._fecha != value))
 				{
-					this._CANTIDAD1 = value;
+					this.OnfechaChanging(value);
+					this.SendPropertyChanging();
+					this._fecha = value;
+					this.SendPropertyChanged("fecha");
+					this.OnfechaChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

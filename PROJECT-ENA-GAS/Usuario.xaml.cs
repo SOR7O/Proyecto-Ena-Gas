@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace PROJECT_ENA_GAS
 {
@@ -25,7 +26,19 @@ namespace PROJECT_ENA_GAS
             InitializeComponent();
             dataContext = new BaseDeDatosDataContext();
             llenar();
+            startClock();
+        }
+        private void startClock()
+        {
+            DispatcherTimer hora = new DispatcherTimer();
+            hora.Tick += tickEvent;
+            hora.Start();
 
+        }
+
+        private void tickEvent(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToString();
         }
 
         private void BtnRegresar_Click(object sender, RoutedEventArgs e)
@@ -41,9 +54,11 @@ namespace PROJECT_ENA_GAS
                          select new {x.cargoUsuario}).ToList();
             lblUsu.DisplayMemberPath = "cargoUsuario";
             lblUsu.SelectedItem = "cargoUsuario";
+           lblUsu.SelectedIndex = 0;
             lblUsu.ItemsSource = lista;
 
         }
+ 
 
         private void BtnAgregar_Click(object sender, RoutedEventArgs e)
         {
@@ -51,29 +66,48 @@ namespace PROJECT_ENA_GAS
             {
                 nombreUsuario = txtN.Text,
                 contraseña = txtC.Password.ToString(),
-                cargo=lblUsu.SelectedValue.ToString()
+                cargo = lblUsu.SelectedValue.ToString()
             };
             var existe = (from us in dataContext.Usuario
                           where us.idUsuario == aUsu.idUsuario
                           select us).SingleOrDefault();
 
+            NewMethod(aUsu, existe);
 
-            if (existe == null)
+        }
+
+        private void NewMethod(Usuario aUsu, Usuario existe)
+        {
+            if (txtN.Text == string.Empty || txtC.Password == string.Empty || lblUsu.SelectedIndex==-1 || txtCc.Password == string.Empty)
             {
-                dataContext.Usuario.InsertOnSubmit(aUsu);
-                dataContext.SubmitChanges();
-                MessageBox.Show("Usuario almacenado");
+                MessageBox.Show("No debes dejar ningun campo vacio");
             }
             else
             {
-                existe.nombreUsuario = aUsu.nombreUsuario;
-                existe.contraseña = aUsu.contraseña;
-                existe.cargo = aUsu.cargo;
-                dataContext.SubmitChanges();
-      
-            }
-            lblUsu.ItemsSource = dataContext.Usuario;
+                MessageBox.Show("Aprede a programar perro");
+                if (txtC.Password == txtCc.Password)
+                {
+                    if (existe == null)
+                    {
+                        dataContext.Usuario.InsertOnSubmit(aUsu);
+                        dataContext.SubmitChanges();
+                        MessageBox.Show("Usuario almacenado");
+                    }
+                    else
+                    {
+                        existe.nombreUsuario = aUsu.nombreUsuario;
+                        existe.contraseña = aUsu.contraseña;
+                        existe.cargo = aUsu.cargo;
+                        dataContext.SubmitChanges();
 
+                    }
+                    lblUsu.ItemsSource = dataContext.Usuario;
+                }
+                else
+                {
+                    MessageBox.Show("Las contraseñas no coinciden");
+                }
+            }
         }
     }
 }

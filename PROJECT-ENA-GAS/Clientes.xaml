@@ -10,6 +10,7 @@
     <Grid Background="LightGray" Margin="0,-12,0,12">
         <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
             <TextBlock Text="Clientes" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+            <TextBlock Name="lblHora" Margin="861,14,79,16" />
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Name="BtnCerrar" Background="#FFEA1616" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right" Click="BtnCerrar_Click">
                     <materialDesign:PackIcon  Foreground="#FF0A1636" Kind="Close" Width="25" Height="25" Background="#FFEA1616"/>
@@ -18,8 +19,18 @@
         </Grid>
 
         <TextBlock FontSize="30" HorizontalAlignment="Left" Height="57" Margin="71,103,0,0" TextWrapping="Wrap" Text="Identidad del cliente" VerticalAlignment="Top" Width="289" IsHitTestVisible="False" Foreground="#FF0C0101"/>
-        <TextBox x:Name="buscarCliente" FontSize="30"  Background="#FFB2A9A9" HorizontalAlignment="Left" Height="43" Margin="71,165,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="675" MaxLength="7" />
-        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Height="43" Margin="858,165,0,0" VerticalAlignment="Top" Width="152" Background="#06069b" Click="BtnBuscar_Click"/>
-        <DataGrid Name="dtgClientes" HorizontalAlignment="Left" Height="308" Margin="71,252,0,0" VerticalAlignment="Top" Width="939"/>
+        <TextBox Name="buscarCliente" FontSize="30"  Background="#FFB2A9A9" HorizontalAlignment="Left" Height="43" Margin="71,165,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="675" MaxLength="7" />
+        <Button Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Height="43" Margin="858,165,0,0" VerticalAlignment="Top" Width="152" Background="#06069b" Click="BtnBuscar_Click"/>
+        <DataGrid Name="dtgClientes" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="308" Margin="71,252,0,0" VerticalAlignment="Top" Width="939">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Identidad" IsReadOnly="True" Binding="{Binding identidad}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nombre" IsReadOnly="True" Binding="{Binding nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Apellido" IsReadOnly="True" Binding="{Binding apellido}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Direccion" IsReadOnly="True" Binding="{Binding direccion}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Telefono" IsReadOnly="True" Binding="{Binding telefono}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Peso" IsReadOnly="True" Binding="{Binding pesoC}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Cantidad de chimbos comprados" IsReadOnly="True" Binding="{Binding cantidad}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
