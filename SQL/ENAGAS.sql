@@ -29,6 +29,7 @@ cantidad INT
 )
 GO
 
+
 --Tabla que registra el total de chimbos sin importar el peso, en general
 CREATE TABLE EnaGas.Inventario(
 idCantidad INT IDENTITY(1,1)NOT NULL,
@@ -62,6 +63,7 @@ cargoUsuario NVARCHAR(50) NOT NULL
 )
 GO
 
+
 --Tabla de registro del total por venta
 CREATE TABLE EnaGas.TotalVenta(
 idTotal INT IDENTITY NOT NULL PRIMARY KEY CLUSTERED,
@@ -77,15 +79,16 @@ ON UPDATE CASCADE
 ON DELETE NO ACTION
 GO
 
-
-
-
-
 --Procedimiento almacenado para agregar n cantidad de chimbos y actualizar el inventario
 CREATE PROCEDURE EnaGas.AGREGAR_CHIMBO @cantidad INT,@precio MONEY,@peso NVARCHAR(20)
 AS
   BEGIN TRANSACTION
     BEGIN TRY
+	if NOT EXISTS(SELECT * FROM EnaGas.Inventario WHERE idCantidad=1)
+	BEGIN
+	INSERT INTO EnaGas.Inventario(cantidad)
+	values(@cantidad-@cantidad)
+	END
 	IF EXISTS(SELECT * FROM EnaGas.Chimbo WHERE peso=@peso)
 	BEGIN
 	       UPDATE EnaGas.Chimbo SET cantidad=@cantidad+cantidad,precio=@precio,peso=@peso where peso=@peso;
@@ -161,6 +164,3 @@ INSERT INTO EnaGas.TotalVenta(totalVenta)
 SELECT precio * @cantidad FROM EnaGas.Chimbo 
 WHERE peso=@peso
 GO
-
-
-
