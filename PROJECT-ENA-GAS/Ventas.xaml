@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:PROJECT_ENA_GAS"
         mc:Ignorable="d"
          Title="Ventas" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
-    <Grid Background="LightGray" Margin="0,-14,0,14">
+    <Grid Background="#eceff1" Margin="0,-14,0,14">
         <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
             <TextBlock Text="Ventas" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
