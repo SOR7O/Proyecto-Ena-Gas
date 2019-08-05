@@ -25,7 +25,8 @@ apellido NVARCHAR(50)NOT NULL,
 direccion NVARCHAR(100)NOT NULL,
 telefono VARCHAR(100),
 pesoC NVARCHAR(100),
-cantidad INT
+cantidad INT,
+fecha SMALLDATETIME DEFAULT GETDATE()
 )
 GO
 
@@ -68,7 +69,7 @@ GO
 CREATE TABLE EnaGas.TotalVenta(
 idTotal INT IDENTITY NOT NULL PRIMARY KEY CLUSTERED,
 totalVenta MONEY,
-fecha DATETIME DEFAULT GETDATE())
+fecha SMALLDATETIME DEFAULT GETDATE())
 GO
 
 --Llave foranea de el usuario
@@ -164,3 +165,6 @@ INSERT INTO EnaGas.TotalVenta(totalVenta)
 SELECT precio * @cantidad FROM EnaGas.Chimbo 
 WHERE peso=@peso
 GO
+
+
+SELECT * FROM EnaGas.TotalVenta
