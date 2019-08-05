@@ -49,25 +49,71 @@ namespace PROJECT_ENA_GAS
 
         private void BtnVender_Click(object sender, RoutedEventArgs e)
         {
-            var canti = (from d in dt.Inventario
-                         select d).FirstOrDefault();
 
-            if (canti.cantidad == 0)
+            using (BaseDeDatosDataContext bdt = new BaseDeDatosDataContext())
             {
-                MessageBox.Show("No existen chimbos en el inventario");
+                IQueryable<TotalVenta> totalVentas = from t in dt.TotalVenta
+                                                     orderby t.idTotal descending
+                                                     select t;
+
+                IQueryable<ClientesEna> objClientes = from cl in bdt.ClientesEna
+                                                      where txtId.Text == cl.identidad
+                                                      select cl;
+
+                var canti = (from d in dt.Inventario
+                             select d).FirstOrDefault();
+                var precio = (from p in dt.Chimbo
+                              where p.peso == cmbPeso.Text
+                              select p).FirstOrDefault();
+
+                var cantidadMenor = (from cm in dt.Chimbo
+                                     where cm.peso == cmbPeso.Text && cm.cantidad == 0
+                                     select cm).FirstOrDefault();
 
 
-            }
-            else
-            {
-                if (canti.cantidad > 0)
+                if (canti.cantidad == 0)
                 {
-                    dt.AGREGAR_VENTA(txtId.Text, txtNombre.Text, txtApellido.Text, txtNumero.Text, txtDireccion.Text, cmbPeso.Text, Convert.ToInt32(txtCantidad.Text));
-                    MessageBox.Show("Dato almacenado");
-                    if (canti.cantidad == 5)
+                    MessageBox.Show("No existen chimbos en el inventario");
+
+                }
+                else
+                {
+                    if (cantidadMenor == null)
                     {
-                        MessageBox.Show("Quedan pocos chimbos");
+                        if (precio != null)
+                        {
+                            {
+                                if (canti.cantidad > 0)
+                                {
+
+                                    dt.AGREGAR_VENTA(txtId.Text, txtNombre.Text, txtApellido.Text, txtNumero.Text, txtDireccion.Text, cmbPeso.Text, Convert.ToInt32(txtCantidad.Text));
+                                    dt.TOTAL_VENTA(Convert.ToInt32(txtCantidad.Text), cmbPeso.Text);
+                                    List<ClientesEna> lista = objClientes.ToList(); List<ClientesEna> listax = objClientes.ToList();
+                                    dtgClientes.ItemsSource = listax;
+                                    MessageBox.Show("Dato almacenado");
+                                    if (canti.cantidad == 5)
+                                    {
+                                        MessageBox.Show("Quedan pocos chimbos");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Lo sentimos no hay chimbos en existencia");
+                                }
+
+                            }
+                        }
                     }
+                    else
+                    {
+                        MessageBox.Show("Lo sentimos no existen chimbos del peso requerido", "Mensaje", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+
+                    var totalDeVenta = (from t in dt.TotalVenta
+                                        orderby t.idTotal descending
+                                        select t).FirstOrDefault();
+
+                    lblTotal.Text = totalDeVenta.totalVenta1.ToString();
                 }
             }
         }
@@ -117,6 +163,9 @@ namespace PROJECT_ENA_GAS
 
         private void BtnSalir_Click(object sender, RoutedEventArgs e)
         {
+            MenuEmpleado menuEmpleado = new MenuEmpleado();
+            menuEmpleado.Show();
+            this.Close();
 
         }
     }

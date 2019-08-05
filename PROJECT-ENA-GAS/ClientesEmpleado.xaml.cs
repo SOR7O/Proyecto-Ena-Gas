@@ -25,6 +25,7 @@ namespace PROJECT_ENA_GAS
         {
             InitializeComponent();
             dt = new BaseDeDatosDataContext();
+            llenar();
             startClock();
         }
         private void startClock()

@@ -84,7 +84,6 @@ namespace PROJECT_ENA_GAS
             }
             else
             {
-                MessageBox.Show("Aprede a programar perro");
                 if (txtC.Password == txtCc.Password)
                 {
                     if (existe == null)
@@ -108,6 +107,50 @@ namespace PROJECT_ENA_GAS
                     MessageBox.Show("Las contraseñas no coinciden");
                 }
             }
+        }
+
+        private void BtnModificar_Click(object sender, RoutedEventArgs e)
+        {
+            Usuario aUsu = new Usuario()
+            {
+                nombreUsuario = txtN.Text,
+                contraseña = txtC.Password.ToString(),
+                cargo = lblUsu.SelectedValue.ToString()
+            };
+
+            
+            var existe = (from us in dataContext.Usuario
+                          where us.nombreUsuario==txtN.Text && us.contraseña== txtCAntigua.Password
+                          select us).SingleOrDefault();
+            if (txtN.Text == string.Empty || txtC.Password == string.Empty || lblUsu.SelectedIndex == -1 || txtCc.Password == string.Empty)
+            {
+                MessageBox.Show("No debes dejar ningun campo vacio");
+            }
+            else
+            {
+                if (txtC.Password == txtCc.Password)
+                {
+                    if (existe == null)
+                    {
+                        MessageBox.Show("El usuario no existe");
+                    }
+                    else
+                    {
+                        existe.nombreUsuario = aUsu.nombreUsuario;
+                        existe.contraseña = aUsu.contraseña;
+                        existe.cargo = aUsu.cargo;
+                        dataContext.SubmitChanges();
+                        MessageBox.Show("Usuario modificado","Mensaje",MessageBoxButton.OK,MessageBoxImage.None);
+                    }
+                    lblUsu.ItemsSource = dataContext.Usuario;
+                }
+                                    
+                else
+                {
+                    MessageBox.Show("Las contraseñas no coinciden");
+                }
+            }
+
         }
     }
 }

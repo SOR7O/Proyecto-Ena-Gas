@@ -19,12 +19,12 @@
         </Grid>
 
         <TextBlock HorizontalAlignment="Left" Height="5" Margin="106,147,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="5"/>
-        <TextBox Name="txtCantidad" HorizontalAlignment="Left" Height="49" Margin="179,147,0,0" VerticalAlignment="Top" Width="824" Background="#FFBFB7B7"/>
-        <TextBox Name="txtPRecio" HorizontalAlignment="Left" Height="49" Margin="179,320,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="824" Background="#FFBFB7B7"/>
+        <TextBox Foreground="Black" Name="txtCantidad" FontSize="30" HorizontalAlignment="Left" Height="49" Margin="183,147,0,0" VerticalAlignment="Top" Width="824" Background="#FFBFB7B7"/>
+        <TextBox Name="txtPRecio" Foreground="Black" FontSize="30" HorizontalAlignment="Left" Height="49" Margin="183,233,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="824" Background="#FFBFB7B7"/>
         <Label HorizontalAlignment="Left" Height="49" Margin="56,147,0,0" Content="Cantidad" VerticalAlignment="Top" Width="101" Foreground="#FF0E0808" FontSize="22"/>
-        <Label Content="Peso" HorizontalAlignment="Left" Height="49" Margin="56,233,0,0"  VerticalAlignment="Top" Width="101" Foreground="#FF0E0808" FontSize="22"/>
-        <Label HorizontalAlignment="Left" Height="49" Margin="56,320,0,0" Content="Precio" VerticalAlignment="Top" Width="123" Foreground="#FF0E0808" FontSize="22"/>
+        <Label Content="Peso" HorizontalAlignment="Left" Height="49" Margin="56,320,0,0"  VerticalAlignment="Top" Width="101" Foreground="#FF0E0808" FontSize="22"/>
+        <Label HorizontalAlignment="Left" Height="49" Margin="55,233,0,0" Content="Precio" VerticalAlignment="Top" Width="123" Foreground="#FF0E0808" FontSize="22"/>
         <Button Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Height="59" Margin="474,500,0,0" VerticalAlignment="Top" Width="167" FontSize="20" Background="#06069b" Click="BtnAgregar_Click" materialDesign:HintAssist.Hint="20 lbs, 25 lbs 30 lbs" materialDesign:HintAssist.IsFloating="False"/>
-        <TextBox Name="txtPeso" HorizontalAlignment="Left" Height="49" Margin="179,233,0,0" VerticalAlignment="Top" Width="824" Background="#FFC1B5B5"/>
+        <TextBox Foreground="Black" Name="txtPeso" FontSize="30" materialDesign:HintAssist.Hint="20 lbs,25 lbs,30 lbs" materialDesign:HintAssist.IsFloating="False" HorizontalAlignment="Left" Height="49" Margin="183,320,0,0" VerticalAlignment="Top" Width="824" Background="#FFC1B5B5"/>
     </Grid>
 </Window>

@@ -47,12 +47,7 @@
                             <TextBlock Text="Inventario" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Selected="ListViewItemEstadisticas">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ChartHistogram" Width="25" Height="25" VerticalAlignment="Center"/>
-                            <TextBlock Text="Estadisticas" VerticalAlignment="Center" Margin="20 10 "/>
-                        </StackPanel>
-                    </ListViewItem>
+
                     <ListViewItem Height="60" Selected="ListViewItemReporte">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Report" Width="25" Height="25" VerticalAlignment="Center"/>
@@ -61,7 +56,7 @@
                     </ListViewItem>
                     <ListViewItem Height="60" Selected="ListViewItemAñadirPersona">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="PersonAdd" Width="25" Height="25" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="GasCylinder" Width="25" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Añadir Chimbos" VerticalAlignment="Center" Margin="20 10 "/>
                         </StackPanel>
                     </ListViewItem>
