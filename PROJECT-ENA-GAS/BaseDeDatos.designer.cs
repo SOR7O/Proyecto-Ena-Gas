@@ -30,6 +30,9 @@ namespace PROJECT_ENA_GAS
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnCreated();
+    partial void InsertChimbo(Chimbo instance);
+    partial void UpdateChimbo(Chimbo instance);
+    partial void DeleteChimbo(Chimbo instance);
     partial void InsertClientesEna(ClientesEna instance);
     partial void UpdateClientesEna(ClientesEna instance);
     partial void DeleteClientesEna(ClientesEna instance);
@@ -42,7 +45,7 @@ namespace PROJECT_ENA_GAS
     #endregion
 		
 		public BaseDeDatosDataContext() : 
-				base(global::PROJECT_ENA_GAS.Properties.Settings.Default.ENAGASConnectionString1, mappingSource)
+				base(global::PROJECT_ENA_GAS.Properties.Settings.Default.ENAGASConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}
@@ -172,8 +175,10 @@ namespace PROJECT_ENA_GAS
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="EnaGas.Chimbo")]
-	public partial class Chimbo
+	public partial class Chimbo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _idChimbo;
 		
@@ -183,11 +188,26 @@ namespace PROJECT_ENA_GAS
 		
 		private decimal _precio;
 		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChimboChanging(int value);
+    partial void OnidChimboChanged();
+    partial void OncantidadChanging(int value);
+    partial void OncantidadChanged();
+    partial void OnpesoChanging(string value);
+    partial void OnpesoChanged();
+    partial void OnprecioChanging(decimal value);
+    partial void OnprecioChanged();
+    #endregion
+		
 		public Chimbo()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idChimbo", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idChimbo", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int idChimbo
 		{
 			get
@@ -198,7 +218,11 @@ namespace PROJECT_ENA_GAS
 			{
 				if ((this._idChimbo != value))
 				{
+					this.OnidChimboChanging(value);
+					this.SendPropertyChanging();
 					this._idChimbo = value;
+					this.SendPropertyChanged("idChimbo");
+					this.OnidChimboChanged();
 				}
 			}
 		}
@@ -214,7 +238,11 @@ namespace PROJECT_ENA_GAS
 			{
 				if ((this._cantidad != value))
 				{
+					this.OncantidadChanging(value);
+					this.SendPropertyChanging();
 					this._cantidad = value;
+					this.SendPropertyChanged("cantidad");
+					this.OncantidadChanged();
 				}
 			}
 		}
@@ -230,7 +258,11 @@ namespace PROJECT_ENA_GAS
 			{
 				if ((this._peso != value))
 				{
+					this.OnpesoChanging(value);
+					this.SendPropertyChanging();
 					this._peso = value;
+					this.SendPropertyChanged("peso");
+					this.OnpesoChanged();
 				}
 			}
 		}
@@ -246,8 +278,32 @@ namespace PROJECT_ENA_GAS
 			{
 				if ((this._precio != value))
 				{
+					this.OnprecioChanging(value);
+					this.SendPropertyChanging();
 					this._precio = value;
+					this.SendPropertyChanged("precio");
+					this.OnprecioChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

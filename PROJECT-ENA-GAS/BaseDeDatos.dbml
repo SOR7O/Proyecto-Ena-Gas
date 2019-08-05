@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ENAGAS" Class="BaseDeDatosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-IDSTH1VH\SQLEXPRESS;Initial Catalog=ENAGAS;Integrated Security=True" SettingsObjectName="PROJECT_ENA_GAS.Properties.Settings" SettingsPropertyName="ENAGASConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=TULIO-HRNDZ;Initial Catalog=ENAGAS;Integrated Security=True" SettingsObjectName="PROJECT_ENA_GAS.Properties.Settings" SettingsPropertyName="ENAGASConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="EnaGas.Cargo" Member="Cargo">
     <Type Name="Cargo">
       <Column Name="idCargo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
@@ -8,7 +8,7 @@
   </Table>
   <Table Name="EnaGas.Chimbo" Member="Chimbo">
     <Type Name="Chimbo">
-      <Column Name="idChimbo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idChimbo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="peso" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />

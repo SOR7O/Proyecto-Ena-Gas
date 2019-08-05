@@ -44,5 +44,15 @@ namespace PROJECT_ENA_GAS.Properties {
                 return ((string)(this["ENAGASConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TULIO-HRNDZ;Initial Catalog=ENAGAS;Integrated Security=True")]
+        public string ENAGASConnectionString2 {
+            get {
+                return ((string)(this["ENAGASConnectionString2"]));
+            }
+        }
     }
 }
