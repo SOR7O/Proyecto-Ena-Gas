@@ -1,0 +1,35 @@
+﻿<Window x:Class="PROJECT_ENA_GAS.Ausuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROJECT_ENA_GAS"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Ausuario" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
+    <Grid Background="LightGray" Margin="0,-12,0,12">
+        <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
+            <TextBlock Name="lblHora" Margin="844,15,96,15" />
+            <TextBlock Text="Añadir Usuario" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="btnRegresar" Background="#FFEA1616" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right" Click="BtnRegresar_Click">
+                    <materialDesign:PackIcon  Foreground="#FF0A1636" Kind="Close" Width="25" Height="25" Background="#FFEA1616"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <TextBlock HorizontalAlignment="Left" Height="5" Margin="106,86,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="5"/>
+        <TextBox Foreground="Black" FontWeight="Bold" Name="txtN" FontSize="20" HorizontalAlignment="Left" Height="49" Margin="259,86,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="744" Background="#FFBFB7B7"/>
+        <PasswordBox Foreground="Black" FontWeight="Bold" Name="txtC" FontSize="40" HorizontalAlignment="Left" Height="49" Margin="259,259,0,0" VerticalAlignment="Top" Width="744" Background="#FFBFB7B7"/>
+        <PasswordBox Foreground="Black" FontWeight="Bold" Name="txtCc" FontSize="40" HorizontalAlignment="Left" Height="49" Margin="259,331,0,0" VerticalAlignment="Top" Width="744" Background="#FFBFB7B7"/>
+        <Label Foreground="Black"  HorizontalAlignment="Left" Height="49" Margin="56,86,0,0" Content="Nombre" VerticalAlignment="Top" Width="101"  FontSize="22"/>
+        <Label  HorizontalAlignment="Left" Height="49" Margin="56,172,0,0" Content="Cargo" VerticalAlignment="Top" Width="101" Foreground="Black"  FontSize="22"/>
+        <Label HorizontalAlignment="Left" Height="49" Margin="34,259,0,0" Content="Contraseña" VerticalAlignment="Top" Width="123" Foreground="Black"  FontSize="22"/>
+        <Label HorizontalAlignment="Left" Height="49" Margin="34,341,0,0" Content="Confirmar contraseña" VerticalAlignment="Top" Width="220" Foreground="Black"  FontSize="22"/>
+        <Button Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Height="59" Margin="338,498,0,0" VerticalAlignment="Top" Width="167" FontSize="20" Background="#06069b" Click="BtnAgregar_Click"/>
+        <Button Name="btnModificar" Content="Modificar" HorizontalAlignment="Left" Height="59" Margin="558,498,0,0" VerticalAlignment="Top" Width="167" FontSize="20" Background="#06069b" Click="BtnModificar_Click"/>
+        <ComboBox Foreground="Black" FontWeight="Bold" Name="lblUsu" HorizontalAlignment="Left" Height="49" Margin="259,172,0,0" VerticalAlignment="Top" Width="248" Background="#FFC1B5B5"/>
+        <PasswordBox Foreground="Black" FontWeight="Bold" Name="txtCAntigua" FontSize="40" HorizontalAlignment="Left" Height="49" Margin="259,413,0,0" VerticalAlignment="Top" Width="744" Background="#FFBFB7B7"/>
+        <Label HorizontalAlignment="Left" Height="49" Margin="34,423,0,0" Content="Contraseña antigua" VerticalAlignment="Top" Width="220" Foreground="Black"  FontSize="22"/>
+    </Grid>
+</Window>

@@ -1,0 +1,43 @@
+﻿<Window x:Class="PROJECT_ENA_GAS.MenuEmpleado"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:PROJECT_ENA_GAS"
+        mc:Ignorable="d"
+        Title="MenuEmpleado" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
+    <Grid Background="#eceff1" Margin="0,-12,0,0" HorizontalAlignment="Right" Width="1080">
+        <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
+            <TextBlock Name="lblHora" Margin="853,13,87,20" />
+            <TextBlock Text="Empleado" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Margin="588,16,390,14" Foreground="Black" FontWeight="Bold" Width="102"/>
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Background="#FF7C1313" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="btnSalir" Click="BtnSalir_Click">
+                    <materialDesign:PackIcon  Foreground="#FF0A1636" Kind="Close" Width="25" Height="25" Background="#FF810E0E"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Width="200" HorizontalAlignment="Left" Background="#FF0048C5">
+
+            <StackPanel>
+                <Grid Height="150" Background="#eceff1">
+                    <Image x:Name="ENA_GASLogin_png" Source="ENA-GASLogin.png" Stretch="Fill"/>
+                </Grid>
+                <ListView Foreground="Beige">
+                    <ListViewItem Height="60" Selected="ListViewItem_Selected">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Person" Width="25" Height="25" VerticalAlignment="Center"/>
+                            <TextBlock Text="Clientes" VerticalAlignment="Center" Margin="20 10 "/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Selected="ListViewItem_Selected_1">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="MoneyUsd" Width="25" Height="25" VerticalAlignment="Center"/>
+                            <TextBlock Text="Ventas" VerticalAlignment="Center" Margin="20 10 "/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ENAGAS" Class="DataBaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-H26444U\SQLEXPRESS;Initial Catalog=ENAGAS;Integrated Security=True" SettingsObjectName="PROJECT_ENA_GAS.Properties.Settings" SettingsPropertyName="ENAGASConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="EnaGas.Usuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombreUsuario" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="contraseña" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="cargo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="EnaGas.Inventario" Member="Inventario">
+    <Type Name="Inventario">
+      <Column Name="idCantidad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Inventario_Chimbo" Member="Chimbo" ThisKey="idCantidad" OtherKey="idCantidad" Type="Chimbo" />
+    </Type>
+  </Table>
+  <Table Name="EnaGas.Clientes" Member="Clientes">
+    <Type Name="Clientes">
+      <Column Name="idCliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="identidad" Type="System.String" DbType="VarChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="direccion" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="EnaGas.Chimbo" Member="Chimbo">
+    <Type Name="Chimbo">
+      <Column Name="idChimbo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idCantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="peso" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="Inventario_Chimbo" Member="Inventario" ThisKey="idCantidad" OtherKey="idCantidad" Type="Inventario" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="EnaGas.Cargo" Member="Cargo">
+    <Type Name="Cargo">
+      <Column Name="idCargo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cargo" Member="cargo1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

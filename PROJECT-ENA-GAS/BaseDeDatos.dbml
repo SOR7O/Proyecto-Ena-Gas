@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ENAGAS" Class="BaseDeDatosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-H26444U\SQLEXPRESS;Initial Catalog=ENAGAS;Integrated Security=True" SettingsObjectName="PROJECT_ENA_GAS.Properties.Settings" SettingsPropertyName="ENAGASConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="EnaGas.Inventario" Member="Inventario">
+    <Type Name="Inventario">
+      <Column Name="idCantidad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="EnaGas.Chimbo" Member="Chimbo">
+    <Type Name="Chimbo">
+      <Column Name="idChimbo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="peso" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="EnaGas.Cargo" Member="Cargo">
+    <Type Name="Cargo">
+      <Column Name="idCargo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cargoUsuario" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Cargo_Usuario" Member="Usuario" ThisKey="idCargo" OtherKey="idCargo" Type="Usuario" />
+    </Type>
+  </Table>
+  <Table Name="EnaGas.Usuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombreUsuario" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="contraseña" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="idCargo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cargo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Cargo_Usuario" Member="Cargo1" ThisKey="idCargo" OtherKey="idCargo" Type="Cargo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="EnaGas.TotalVenta" Member="TotalVenta">
+    <Type Name="TotalVenta">
+      <Column Name="idTotal" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="totalVenta" Member="totalVenta1" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="EnaGas.ClientesEna" Member="ClientesEna">
+    <Type Name="ClientesEna">
+      <Column Name="idCliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="identidad" Type="System.String" DbType="VarChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="direccion" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="pesoC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="EnaGas.AGREGAR_CHIMBO" Method="AGREGAR_CHIMBO">
+    <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="precio" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="peso" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="EnaGas.AGREGAR_VENTA" Method="AGREGAR_VENTA">
+    <Parameter Name="identidad" Type="System.String" DbType="VarChar(13)" />
+    <Parameter Name="nombre" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="apellido" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="direccion" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="telefono" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="peso" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="EnaGas.TOTAL_VENTA" Method="TOTAL_VENTA">
+    <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="peso" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

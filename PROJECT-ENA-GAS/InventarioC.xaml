@@ -1,0 +1,28 @@
+﻿<Window x:Class="PROJECT_ENA_GAS.InventarioC"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROJECT_ENA_GAS"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+                Title="Inventario" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="White">
+    <Grid Background="LightGray" Margin="0,-12,0,12">
+        <Grid Height="60" VerticalAlignment="Top" Background="#06069b">
+            <TextBlock Text="Inventario" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+            <TextBlock Name="lblHora" Margin="856,15,84,15" />
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Name="btnRegresar" Background="#FFEA1616" Width="60" Height="30"  VerticalAlignment="Center" HorizontalAlignment="Right" Click="BtnRegresar_Click">
+                    <materialDesign:PackIcon  Foreground="#FF0A1636" Kind="Close" Width="25" Height="25" Background="#FFEA1616"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <DataGrid Name="dtgView" HorizontalAlignment="Left" Height="333" Margin="73,121,0,0" VerticalAlignment="Top" Width="936" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Total de chimbos en existencia" Binding="{Binding cantidad}" ></DataGridTextColumn>
+            </DataGrid.Columns>
+            
+        </DataGrid>
+
+    </Grid>
+</Window>
