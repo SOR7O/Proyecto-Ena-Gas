@@ -113,6 +113,7 @@
     <Compile Include="ClientesEmpleado.xaml.cs">
       <DependentUpon>ClientesEmpleado.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EncriptarClass1.cs" />
     <Compile Include="InventarioC.xaml.cs">
       <DependentUpon>InventarioC.xaml</DependentUpon>
     </Compile>

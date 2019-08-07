@@ -23,11 +23,13 @@ namespace PROJECT_ENA_GAS
     public partial class MainWindow : Window
     {
         BaseDeDatosDataContext dt;
+        EncriptarClass1 clave;
         public MainWindow()
         {
             InitializeComponent();
             dt = new BaseDeDatosDataContext();
             LlenarU();
+            clave = new EncriptarClass1();
 
 
 
@@ -60,7 +62,7 @@ namespace PROJECT_ENA_GAS
         {
             //Definimos la variable existeNombre y le mandamos los valores que ingramos y los compara con la base de datos y si existen el usuario puede ingresar
             var existeNombre = (from usuario in dt.Usuario
-                                where usuario.nombreUsuario == txtNombre.Text && usuario.contraseña == txtContraLogin.Password.ToString() && usuario.cargo==lblUsu.SelectedValue.ToString()
+                                where usuario.nombreUsuario == txtNombre.Text && usuario.contraseña ==clave.EcryptKey (txtContraLogin.Password.ToString()) && usuario.cargo==lblUsu.SelectedValue.ToString()
                                 select usuario).FirstOrDefault();
 
             //condicion que si el usuario deja un campo vacio se lo recordamos mediante un mensaje

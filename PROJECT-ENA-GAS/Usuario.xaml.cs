@@ -21,12 +21,14 @@ namespace PROJECT_ENA_GAS
     public partial class Ausuario : Window
     {
         BaseDeDatosDataContext dataContext;
+        EncriptarClass1 clave;
         public Ausuario()
         {
             InitializeComponent();
             dataContext = new BaseDeDatosDataContext();
             llenar();
             startClock();
+            clave = new EncriptarClass1();
         }
         private void startClock()
         {
@@ -65,7 +67,7 @@ namespace PROJECT_ENA_GAS
             Usuario aUsu = new Usuario()
             {
                 nombreUsuario = txtN.Text,
-                contraseña = txtC.Password.ToString(),
+                contraseña =clave.EcryptKey(txtC.Password.ToString()),
                 cargo = lblUsu.SelectedValue.ToString()
             };
             var existe = (from us in dataContext.Usuario
@@ -95,7 +97,7 @@ namespace PROJECT_ENA_GAS
                     else
                     {
                         existe.nombreUsuario = aUsu.nombreUsuario;
-                        existe.contraseña = aUsu.contraseña;
+                        existe.contraseña = clave.EcryptKey(aUsu.contraseña);
                         existe.cargo = aUsu.cargo;
                         dataContext.SubmitChanges();
 
@@ -114,7 +116,7 @@ namespace PROJECT_ENA_GAS
             Usuario aUsu = new Usuario()
             {
                 nombreUsuario = txtN.Text,
-                contraseña = txtC.Password.ToString(),
+                contraseña = clave.EcryptKey(txtC.Password.ToString()),
                 cargo = lblUsu.SelectedValue.ToString()
             };
 
@@ -132,15 +134,16 @@ namespace PROJECT_ENA_GAS
                 {
                     if (existe == null)
                     {
-                        MessageBox.Show("El usuario no existe");
+                        MessageBox.Show("El usuario no existe o tiene un campo incorrecto");
                     }
                     else
                     {
                         existe.nombreUsuario = aUsu.nombreUsuario;
-                        existe.contraseña = aUsu.contraseña;
+                        existe.contraseña = clave.EcryptKey(aUsu.contraseña);
                         existe.cargo = aUsu.cargo;
                         dataContext.SubmitChanges();
                         MessageBox.Show("Usuario modificado","Mensaje",MessageBoxButton.OK,MessageBoxImage.None);
+                        lblUsu.ItemsSource = dataContext.Usuario;
                     }
                     lblUsu.ItemsSource = dataContext.Usuario;
                 }
